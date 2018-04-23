@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title> Vue Beers - VueJS tutorial - Filtering the list </title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  
+    <style>
+      body {
+        background-color: #eeeeee;
+      }
+    </style>
+
+    <link rel="stylesheet" 
+        href="/vue-beers/assets/bootstrap/bootstrap.min.css">
+
+    <script src="/vue-beers/assets/jquery/jquery.js"></script>
+    <script src="/vue-beers/assets/bootstrap/bootstrap.js"></script>
+
+    <script src='/vue-beers/node_modules/vue/dist/vue.js'></script>
+
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers.css">
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers-navbar.css">
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/vue-beers/css/syntax.css">
+  
+
+    <script defer 
+        src="/vue-beers/assets/font-awesome/releases/v5.0.6/js/all.js"></script>
+
+    <style>
+      :host {
+        display: block;
+      }
+      .top-10 { margin-top:10px; }
+      h4 {
+        font-weight: bold;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  
+<body>
+  <warp10-embeddable-quantum-conf 
+    backend='{"id":"helloexoworld","label":"HelloExo.World","url":""}' 
+    debug></warp10-embeddable-quantum-conf>
+  
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <!--
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      -->
+        <button type="button" 
+            class="navbar-toggle toggle collapsed" 
+            data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/vue-beers/">
+          <div class="navbar-id">
+            <div class="navbar-id-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 200 200"><circle cx="100" cy="100" r="98.121" fill="#fff"/><path fill="#42b883" d="M32.065 35.392l68.095 117.945 68.095-117.945h-52.368L100.16 62.627 84.433 35.392z"/><path fill="#35495e" d="M59.3 35.392l40.86 70.766 40.86-70.766h-25.133L100.16 62.627 84.433 35.392z"/><path d="M134.029 167.673c-2.754-1.292-2.653-18.566-2.653-45.001 0-20.536.091-24.219.654-26.311.703-2.621 1.691-4.36 3.476-6.12 2.49-2.455 2.55-2.684 2.663-10.29.106-7.092.713-11.485 2.158-15.608 1.033-2.952 1.1-3.803.385-4.868-.827-1.23-.844-2.89-.042-4.073.893-1.316.776-1.88-.617-2.976-1.916-1.507-1.397-2.914 1.294-3.507 1.85-.408 11.733-.388 13.68.027 2.614.559 3.073 1.96 1.14 3.48-1.466 1.154-1.497 1.383-.403 3.031.9 1.355.83 2.338-.296 4.247-.59 1-.573 1.291.225 3.814 1.776 5.613 2.23 8.614 2.362 15.601.07 3.758.238 7.284.372 7.836.134.552 1.173 1.982 2.31 3.178 1.136 1.195 2.478 3.103 2.983 4.239.914 2.056.919 2.179 1.034 27.078.127 27.624.215 44.921-2.467 46.178-1.294.607-2.056.642-14.177.642-11.805 0-12.908-.047-14.081-.597z" fill="#35495e" stroke="#35495e" stroke-width="3.815" /></svg>
+            </div>
+            <div class="navbar-id-name">
+              Vue Beers - A Vue.js tutorial
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-separator" > </div>
+
+  <warp10-conf conf="doc"></warp10-conf>
+
+  <div id="mainbody">
+
+  <div class="container top-10" id="main-container">
+    <div class="row">
+      
+    <div id="sidebar" class="col-sm-3 collapse">
+      
+        <div class="panel-group" id="side-menu">
+      
+            <div id="panel-steps" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-steps">
+                    Steps
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-steps" class="panel-collapse collapse  in ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/">
+                    Filtering
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/">
+                    Sorting
+                </a>
+            </div>
+        
+        </div>
+    </div>
+        
+            <div id="panel-solutions" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-solutions">
+                Solutions
+            </a>
+            </h4>
+        </div>
+        <div id="collapse-solutions" class="panel-collapse collapse ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/solution/"
+                    target="_blank">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/solution/"
+                    target="_blank">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/solution/"
+                    target="_blank">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/solution/"
+                    target="_blank">
+                    Filtering
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/solution/"
+                    target="_blank">
+                    Sorting
+                </a>
+                
+            </div>
+        
+        </div>
+    </div>
+        
+      
+      
+        </div>
+      
+     </div>
+      
+      <div class="col-sm-9">
+        <h1>Filtering the list</h1>
+        <p>We did a lot of work in laying a foundation for the app in the last step, so now we’ll do something simple: we will add full text search (yes, it will be simple!).</p>
+
+<h2 id="modifying-beer-list-template">Modifying <code class="highlighter-rouge">beer-list</code> template</h2>
+
+<p>We use <a href="http://getbootstrap.com">Twitter Bootstrap</a> column model to divide the page in two (fully responsive) columns, the left one for the search box, the right one for the beer list.</p>
+
+<p>We need to add a standard HTML <code class="highlighter-rouge">&lt;input&gt;</code> tag, give them some magical data-binding properties and adding a filtering function to the <code class="highlighter-rouge">v-for</code> to show only the searched results.</p>
+
+<p>This lets a user enter search criteria and immediately see the effects of their search on the beer list.</p>
+
+<p>Let’s begin by modifying the template to add the search input.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--Sidebar content--&gt;</span>
+        <span class="nt">&lt;div&gt;</span>Search:<span class="nt">&lt;/div&gt;</span> 
+        <span class="nt">&lt;div&gt;&lt;input</span> <span class="na">id=</span><span class="s">"searchInput"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-9"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"beers"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"beer"</span> <span class="na">v-for=</span><span class="s">"beer in beers"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;beer-list-item</span> 
+                        <span class="na">v-bind:name=</span><span class="s">'beer.name'</span>
+                        <span class="na">v-bind:description=</span><span class="s">'beer.description'</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;/beer-list-item&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>  
+</code></pre></div></div>
+
+<h2 id="two-ways-data-binding">Two-ways data-binding</h2>
+
+<p>Now we need to link the search input field value to a property of the object.</p>
+
+<p>First we begin by declaring <code class="highlighter-rouge">filterText</code> as a internal state variable for the component, i.e. we put it in the <code class="highlighter-rouge">data</code> object:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">data</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> 
+        <span class="na">filterText</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>   
+        <span class="p">[...]</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the template we use value to link the <code class="highlighter-rouge">input</code> event of the <code class="highlighter-rouge">input</code> item to the <code class="highlighter-rouge">filterText</code> data property, and we add a label under it to show the current value of <code class="highlighter-rouge">filterText</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--Sidebar content--&gt;</span>
+    <span class="nt">&lt;div&gt;</span>Search:<span class="nt">&lt;/div&gt;</span> 
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"searchInput"</span> <span class="na">v-model=</span><span class="s">"{{filterText}}"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>    
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;div&gt;</span>Current search:<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div&gt;</span>{{filterText}}<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<p>And now we have a two-way data-binding between the input field and the label under it.</p>
+
+<div class="container demo">
+    <div id="app-04_01">
+        <h1>{{ message }}</h1>
+        <beer-list></beer-list>
+    </div>
+</div>
+
+<script>
+    if (!window.VueBeers) {
+    window.VueBeers = {};
+}
+
+window.VueBeers.beerList04_01 = {
+    data: function() {
+        return { 
+            filterText: '',   
+            beers:[
+                {
+                    alcohol: 8.5,
+                    name: "Affligem Tripel",
+                    description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+                },
+                {
+                    alcohol: 9.2,
+                    name: "Rochefort 8",
+                    description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+                },
+                {
+                    alcohol: 7,
+                    name: "Chimay Rouge",
+                    description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+                }
+            ],        
+        };
+    },
+    template: `
+    <div class="container">
+        <div class="row">
+            <div class="sidebar col-md-3">
+                <div>Search:</div> 
+                <div>
+                    <input id="searchInput" v-model="filterText">
+                </div>
+                <div>
+                    <div>Current search:</div>
+                    <div>{{filterText}}</div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="beers">
+                    <div class="beer" v-for="beer in beers">
+                        <beer-list-item 
+                            v-bind:name='beer.name'
+                            v-bind:description='beer.description'>
+                        </beer-list-item>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    `,
+};
+
+window.VueBeers.beerListItem04_01 = {
+    data: function() {
+        return {   
+        };
+    },
+    props: [ 'name', 'description' ],
+    template: `
+    <div class="beer">
+        <span>{{ name }}</span>
+        <p>{{ description }}.</p>
+    </div>
+    `,
+};
+
+
+Vue.component('beer-list', VueBeers.beerList04_01);
+Vue.component('beer-list-item', VueBeers.beerListItem04_01);
+var app = new Vue({
+    el: '#app-04_01',
+    data: {
+        message: 'Vue Beers',
+    }
+});
+
+</script>
+
+<style>
+    #searchInput {
+        max-width: 100%;
+        width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+    .container {
+        max-width: 100%;
+    }
+</style>
+
+<h2 id="adding-a-filter-to-the-list">Adding a filter to the list</h2>
+
+<p>Now we want to use that <code class="highlighter-rouge">filterText</code> property to filter the list.</p>
+
+<p>In order to do it we can use a <code class="highlighter-rouge">filteredText</code> depending on <code class="highlighter-rouge">filterText</code>. The methods of a Vue component are called everytime the depending properties change.</p>
+
+<p>So we add a <code class="highlighter-rouge">filteredText</code> object to our <code class="highlighter-rouge">beer-list</code> component options:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">filteredList</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">filterText</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">filteredText</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">beers</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">beers</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span> <span class="p">(</span><span class="nx">beer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">beer</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">filterText</span><span class="p">,</span> <span class="s1">'i'</span><span class="p">));</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</code></pre></div></div>
+
+<p>And in the <code class="highlighter-rouge">v-for</code> directive, we iterate on the filtered list:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"beer"</span> <span class="na">v-for=</span><span class="s">"beer in filteredList(beers)"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;beer-list-item</span> 
+        <span class="na">v-bind:name=</span><span class="s">'beer.name'</span>
+        <span class="na">v-bind:description=</span><span class="s">'beer.description'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/beer-list-item&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>And now we have a working filter for our beers!</p>
+
+<div class="container demo">
+    <div id="app-04_02">
+        <h1>{{ message }}</h1>
+        <beer-list></beer-list>
+    </div>
+</div>
+
+<script>
+    if (!window.VueBeers) {
+    window.VueBeers = {};
+}
+
+window.VueBeers.beerList04_02 = {
+    data: function() {
+        return { 
+            filterText: '',   
+            beers:[
+                {
+                    alcohol: 8.5,
+                    name: "Affligem Tripel",
+                    description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+                },
+                {
+                    alcohol: 9.2,
+                    name: "Rochefort 8",
+                    description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+                },
+                {
+                    alcohol: 7,
+                    name: "Chimay Rouge",
+                    description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+                }
+            ],        
+        };
+    },  
+    methods: {
+        filteredList: function (filterText) {
+            if (!this.filterText) {
+                return this.beers;
+            }
+            return this.beers.filter( (beer) => {
+            console.log('Filtering', this.filterText, beer.name, beer.name.match(new RegExp(this.filterText, 'i')));
+                return beer.name.match(new RegExp(this.filterText, 'i'));
+            })
+        }
+    },
+    template: `
+    <div class="container">
+        <div class="row">
+            <div class="sidebar col-md-3">
+                <div>Search:</div> 
+                <div>
+                    <input id="searchInput04_02" v-model="filterText">
+                </div>
+                <div>
+                    <div>Current search:</div>
+                    <div>{{filterText}}</div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="beers">
+                    <div class="beer" v-for="beer in filteredList(beers)">
+                        <beer-list-item 
+                            v-bind:name='beer.name'
+                            v-bind:description='beer.description'>
+                        </beer-list-item>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    `,
+};
+
+window.VueBeers.beerListItem04_02 = {
+    data: function() {
+        return {   
+        };
+    },
+    props: [ 'name', 'description' ],
+    template: `
+    <div class="beer">
+        <span>{{ name }}</span>
+        <p>{{ description }}.</p>
+    </div>
+    `,
+};
+
+
+Vue.component('beer-list', VueBeers.beerList04_02);
+Vue.component('beer-list-item', VueBeers.beerListItem04_02);
+var app = new Vue({
+    el: '#app-04_02',
+    data: {
+        message: 'Vue Beers',
+    }
+});
+
+</script>
+
+<style>
+    #searchInput04_02 {
+        max-width: 100%;
+        width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+    .container {
+        max-width: 100%;
+    }
+</style>
+
+
+        <div class='before-solution-next'>
+
+    
+        <div class='before'><a href="/vue-beers/step-03/">Previous</a></div>
+    
+    
+        <div class='solution'><a href="/vue-beers/step-04/solution/" target="_blank">Solution</a></div>
+    
+    
+    
+        <div class='next'><a href="/vue-beers/step-05/">Next</a></div>
+    
+</div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+<footer>
+    <div> <hr> </div>
+
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 center">
+            <h3>
+                <a href="https://medium.com/helloexoworld">
+                    <i class="fab fa-medium-m fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://twitter.com/helloexoworld">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://github.com/helloexoworld">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://groups.google.com/forum/#!forum/helloexoworld">
+                    <i class="fas fa-envelope fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a target="_blank" href="https://twitter.com/home?status=Hey%20%40HelloExoWorld,%20I%20would%20like%20to%20have%20an%20invitation%20to%20join%20Slack!">
+                    <i class="fab fa-slack fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+    <div class="small center">
+        &copy; 2018 - <a href="https://helloexo.world/">Association HelloExoWorld</a></div>
+
+    </div>
+</footer>
+</body>
+</html>
