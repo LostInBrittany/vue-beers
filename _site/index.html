@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title> Vue Beers - VueJS tutorial - Vue Beers - A Vue.js tutorial </title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  
+    <style>
+      body {
+        background-color: #eeeeee;
+      }
+    </style>
+
+    <link rel="stylesheet" 
+        href="/vue-beers/assets/bootstrap/bootstrap.min.css">
+
+    <script src="/vue-beers/assets/jquery/jquery.js"></script>
+    <script src="/vue-beers/assets/bootstrap/bootstrap.js"></script>
+
+    <script src='/vue-beers/node_modules/vue/dist/vue.js'></script>
+
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers.css">
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers-navbar.css">
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/vue-beers/css/syntax.css">
+  
+
+    <script defer 
+        src="/vue-beers/assets/font-awesome/releases/v5.0.6/js/all.js"></script>
+
+    <style>
+      :host {
+        display: block;
+      }
+      .top-10 { margin-top:10px; }
+      h4 {
+        font-weight: bold;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  
+<body>
+  <warp10-embeddable-quantum-conf 
+    backend='{"id":"helloexoworld","label":"HelloExo.World","url":""}' 
+    debug></warp10-embeddable-quantum-conf>
+  
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <!--
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      -->
+        <button type="button" 
+            class="navbar-toggle toggle collapsed" 
+            data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/vue-beers/">
+          <div class="navbar-id">
+            <div class="navbar-id-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 200 200"><circle cx="100" cy="100" r="98.121" fill="#fff"/><path fill="#42b883" d="M32.065 35.392l68.095 117.945 68.095-117.945h-52.368L100.16 62.627 84.433 35.392z"/><path fill="#35495e" d="M59.3 35.392l40.86 70.766 40.86-70.766h-25.133L100.16 62.627 84.433 35.392z"/><path d="M134.029 167.673c-2.754-1.292-2.653-18.566-2.653-45.001 0-20.536.091-24.219.654-26.311.703-2.621 1.691-4.36 3.476-6.12 2.49-2.455 2.55-2.684 2.663-10.29.106-7.092.713-11.485 2.158-15.608 1.033-2.952 1.1-3.803.385-4.868-.827-1.23-.844-2.89-.042-4.073.893-1.316.776-1.88-.617-2.976-1.916-1.507-1.397-2.914 1.294-3.507 1.85-.408 11.733-.388 13.68.027 2.614.559 3.073 1.96 1.14 3.48-1.466 1.154-1.497 1.383-.403 3.031.9 1.355.83 2.338-.296 4.247-.59 1-.573 1.291.225 3.814 1.776 5.613 2.23 8.614 2.362 15.601.07 3.758.238 7.284.372 7.836.134.552 1.173 1.982 2.31 3.178 1.136 1.195 2.478 3.103 2.983 4.239.914 2.056.919 2.179 1.034 27.078.127 27.624.215 44.921-2.467 46.178-1.294.607-2.056.642-14.177.642-11.805 0-12.908-.047-14.081-.597z" fill="#35495e" stroke="#35495e" stroke-width="3.815" /></svg>
+            </div>
+            <div class="navbar-id-name">
+              Vue Beers - A Vue.js tutorial
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-separator" > </div>
+
+  <warp10-conf conf="doc"></warp10-conf>
+
+  <div id="mainbody">
+
+  <div class="container top-10" id="main-container">
+    <div class="row">
+      
+    <div id="sidebar" class="col-sm-3 collapse">
+      
+        <div class="panel-group" id="side-menu">
+      
+            <div id="panel-steps" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-steps">
+                    Steps
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-steps" class="panel-collapse collapse ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/">
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/">
+                </a>
+            </div>
+        
+        </div>
+    </div>
+        
+            <div id="panel-solutions" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-solutions">
+                Solutions
+            </a>
+            </h4>
+        </div>
+        <div id="collapse-solutions" class="panel-collapse collapse ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/solution/"
+                    target="_blank">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/solution/"
+                    target="_blank">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/solution/"
+                    target="_blank">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/solution/"
+                    target="_blank">
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/solution/"
+                    target="_blank">
+                </a>
+                
+            </div>
+        
+        </div>
+    </div>
+        
+      
+      
+        </div>
+      
+     </div>
+      
+      <div class="col-sm-9">
+        <h1>Vue Beers - A Vue.js tutorial</h1>
+        <p><em>A work-in-progress tutorial for Polymer based on my <a href="https://github.com/LostInBrittany/angular-beers">Angular Beers</a> and  <a href="https://github.com/LostInBrittany/polymer-beers">Polymer Beers</a> tutorial</em></p>
+
+<p><img src="/vue-beers/img/logo-500px.png" alt="Logo" /></p>
+
+<p>I have built this <a href="https://lostinbrittany.github.com/io/vue-beers">Vue Beers</a> tutorial as a quick entry point to <a href="https://vuejs.org/">Vue.js</a>. I’ve based it on a similar tutorial I did for <a href="https://angular.io/">Angular</a> and <a href="https://www.polymer-project.org/">Polymer</a>, <a href="https://github.com/LostInBrittany/angular-beers">Angular Beers</a> and  <a href="https://github.com/LostInBrittany/polymer-beers">Polymer Beers</a>.</p>
+
+<p>For the last several years, I’ve taught a web-development module in an Engineering School with a rather restrictive network. As I plan to use this tutorial in next year module, in order to explain Vue.js to our students, I needed a tutorial that could be played without network acces, i.e. without npm. So <em>Vue Beers</em> needed to be able to be done even behind a very restrictive proxy, and all the dependencies are included inside the git project.</p>
+
+<h2 id="what-are-the-objectives-of-this-tutorial">What are the objectives of this tutorial</h2>
+
+<p>Follow the tutorial to learn the bases of <a href="https://vuejs.org/">Vue.js</a>, a progressive framework for building web applications. You will:</p>
+
+<ul>
+  <li>See examples of how to use client-side data binding to build dynamic views of data that change immediately in response to user actions.</li>
+  <li>See how Vue.js keeps your views in sync with your data without the need for DOM manipulation.</li>
+  <li>Learn how to build technical elements to make common web tasks, such as getting data into your app, easier.</li>
+</ul>
+
+<p>When you finish the tutorial you will be able to:</p>
+
+<ul>
+  <li>Create a dynamic application that works in all modern browsers.</li>
+  <li>Create custom elements, with its looks and its behaviour encapsulated inside, setting the bases of a true component architecture client-side</li>
+  <li>Use data binding to wire up your data model to your views.</li>
+  <li>Get data from a server</li>
+  <li>Use <a href="https://router.vuejs.org/en/">vue-router</a>, the official routing library, to add multipage capabilities to your application</li>
+</ul>
+
+<p>The tutorial guides you through the entire process of building a simple application. Experiments at the end of each step provide suggestions for you to learn more about Polymer and the application you are building.</p>
+
+<p>You can go through the whole tutorial in a couple of hours or you may want to spend a pleasant day really digging into it. If you’re looking for a shorter introduction to Vue.js, check out the official website.</p>
+
+<p><img src="/img/step-06_01.jpg" alt="Screenshot" /></p>
+
+<p><img src="/img/step-08_02.jpg" alt="Screenshot" /></p>
+
+<h2 id="what-do-i-need-to-use-this-tutorial">What do I need to use this tutorial?</h2>
+
+<p>Besides a web browser and a text-editor (we suggest the excellent <a href="http://www.sublimetext.com/">Sublime Text</a>), you will only need a web-server to test your code.</p>
+
+<p>If you have Python in your system, the easiest way would be to run the embeded SimpleHTTPServer. Go to the project directory and run</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Python 2.x
+python -m SimpleHTTPServer
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Python 3.x
+python -m http.server
+</code></pre></div></div>
+
+<p>to start the web server. Now, open a browser window for the app and navigate to http://localhost:8000/app/index.html to see the current state of the app.</p>
+
+<p>If you have <a href="http://nodejs.org">NodeJS</a> in your system, we have put a minimalist JavaScript web-server on <code class="highlighter-rouge">./scripts/web-server.js</code>. To see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and then run <code class="highlighter-rouge">node ./scripts/web-server.js</code> to start the web server. Now, open a browser window for the app and navigate to http://localhost:8000/app/index.html to see the current state of the app.</p>
+
+<h2 id="how-is-the-tutorial-organized">How is the tutorial organized</h2>
+
+<p>As the computers used for the course haven’t Git, we have structured the project to allow a Git-less use. The <code class="highlighter-rouge">app</code> directory is the main directory of the project, the working version of the code. The tutorial is divided in steps, each one in its own directory:</p>
+
+<ol>
+  <li><a href="./step-01/">Let’s begin with some static HTML</a></li>
+  <li><a href="./step-02/">Creating your first Vue.js app</a></li>
+  <li><a href="./step-03/">A component to iterate the list</a></li>
+  <li><a href="./step-04/">Filtering</a></li>
+  <li><a href="./step-05/">Sorting</a></li>
+  <li><a href="./step-06/">Calling the server</a></li>
+  <li><a href="./step-07/">Routing URLs using App Router</a></li>
+</ol>
+
+<p>In each step directory you have a README file that explain the objective of the step, that you will do in the working directory <code class="highlighter-rouge">app</code>. If you have problems or if you get lost, you also have the solution of each step in a <code class="highlighter-rouge">solution</code> folder inside the the step folder. So if you want to see the intended result of the 6th step, you can point your browser to http://localhost:8000/step-06/solution/index.html</p>
+
+<h2 id="what-should-i-do-now">What should I do now?</h2>
+
+<p>OK, now you’re ready to follow this tutorial. If you’re familiar with git, begin by cloning this repository (<code class="highlighter-rouge">git clone https://github.com/LostInBrittany/vue-beers</code>), else you can simply download the zipped file from <a href="https://github.com/LostInBrittany/vue-beers/archive/master.zip">GitHub</a>.</p>
+
+<p>Now can go to <a href="./step-01">step-01</a> and begin to follow the README of that step.</p>
+
+<p>Let’s begin!</p>
+
+        <div class='before-solution-next'>
+
+    
+    
+    
+    
+</div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+<footer>
+    <div> <hr> </div>
+
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 center">
+            <h3>
+                <a href="https://medium.com/helloexoworld">
+                    <i class="fab fa-medium-m fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://twitter.com/helloexoworld">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://github.com/helloexoworld">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://groups.google.com/forum/#!forum/helloexoworld">
+                    <i class="fas fa-envelope fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a target="_blank" href="https://twitter.com/home?status=Hey%20%40HelloExoWorld,%20I%20would%20like%20to%20have%20an%20invitation%20to%20join%20Slack!">
+                    <i class="fab fa-slack fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+    <div class="small center">
+        &copy; 2018 - <a href="https://helloexo.world/">Association HelloExoWorld</a></div>
+
+    </div>
+</footer>
+</body>
+</html>

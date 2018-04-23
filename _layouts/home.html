@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+  <warp10-embeddable-quantum-conf 
+    backend='{"id":"helloexoworld","label":"HelloExo.World","url":"{{ site.warp10.endpoint }}"}' 
+    debug></warp10-embeddable-quantum-conf>
+  {% include nav.html %}
+  <div class="container top-10" id="main-container">
+    <div class="row">
+      {% include sidebar.html %}
+      <div class="col-sm-9">
+        <h1>{{ page.title }}</h1>
+        {{ content }}
+        {% include before-solution-next.html %}
+      </div>
+    </div>
+  </div>
+  {% include footer.html %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+<div class='before-solution-next'>
+
+    {% if page.before %}
+        <div class='before'><a href="{{ site.baseurl }}/{{ page.before }}">Previous</a></div>
+    {% endif %}
+    {% if page.solution %}
+        <div class='solution'><a href="{{ site.baseurl }}/{{ page.solution }}" target="_blank">Solution</a></div>
+    {% endif %}
+    {% if page.back %}
+        <div class='back'><a href="{{ site.baseurl }}/{{ page.back }}">Back</a></div>
+    {% endif %}
+    {% if page.next %}
+        <div class='next'><a href="{{ site.baseurl }}/{{ page.next }}">Next</a></div>
+    {% endif %}
+</div>

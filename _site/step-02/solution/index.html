@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Polymer Beer Gallery</title>
+  <script src='../../node_modules/vue/dist/vue.js'></script>
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container demo">
+        <div id='app'>
+            <h1>{{ message }}</h1>
+            <ul>
+                <li>
+                    <span>{{ beers[0].name }}</span>
+                    <p>{{ beers[0].description }}.</p>
+                </li>
+                <li>
+                    <span>{{ beers[1].name }}</span>
+                    <p>{{ beers[1].description }}.</p>
+                </li>
+                <li>
+                    <span>{{ beers[2].name }}</span>
+                    <p>{{ beers[2].description }}.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Vue Beers',
+            beers:[
+                {
+                    alcohol: 8.5,
+                    name: "Affligem Tripel",
+                    description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+                },
+                {
+                    alcohol: 9.2,
+                    name: "Rochefort 8",
+                    description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+                },
+                {
+                    alcohol: 7,
+                    name: "Chimay Rouge",
+                    description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+                }
+            ],        
+        }
+    })
+    </script>
+</body>
+
+</html>

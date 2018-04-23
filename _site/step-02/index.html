@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title> Vue Beers - VueJS tutorial - Creating your first Vue.js app </title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  
+    <style>
+      body {
+        background-color: #eeeeee;
+      }
+    </style>
+
+    <link rel="stylesheet" 
+        href="/vue-beers/assets/bootstrap/bootstrap.min.css">
+
+    <script src="/vue-beers/assets/jquery/jquery.js"></script>
+    <script src="/vue-beers/assets/bootstrap/bootstrap.js"></script>
+
+    <script src='/vue-beers/node_modules/vue/dist/vue.js'></script>
+
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers.css">
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers-navbar.css">
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/vue-beers/css/syntax.css">
+  
+
+    <script defer 
+        src="/vue-beers/assets/font-awesome/releases/v5.0.6/js/all.js"></script>
+
+    <style>
+      :host {
+        display: block;
+      }
+      .top-10 { margin-top:10px; }
+      h4 {
+        font-weight: bold;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  
+<body>
+  <warp10-embeddable-quantum-conf 
+    backend='{"id":"helloexoworld","label":"HelloExo.World","url":""}' 
+    debug></warp10-embeddable-quantum-conf>
+  
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <!--
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      -->
+        <button type="button" 
+            class="navbar-toggle toggle collapsed" 
+            data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/vue-beers/">
+          <div class="navbar-id">
+            <div class="navbar-id-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 200 200"><circle cx="100" cy="100" r="98.121" fill="#fff"/><path fill="#42b883" d="M32.065 35.392l68.095 117.945 68.095-117.945h-52.368L100.16 62.627 84.433 35.392z"/><path fill="#35495e" d="M59.3 35.392l40.86 70.766 40.86-70.766h-25.133L100.16 62.627 84.433 35.392z"/><path d="M134.029 167.673c-2.754-1.292-2.653-18.566-2.653-45.001 0-20.536.091-24.219.654-26.311.703-2.621 1.691-4.36 3.476-6.12 2.49-2.455 2.55-2.684 2.663-10.29.106-7.092.713-11.485 2.158-15.608 1.033-2.952 1.1-3.803.385-4.868-.827-1.23-.844-2.89-.042-4.073.893-1.316.776-1.88-.617-2.976-1.916-1.507-1.397-2.914 1.294-3.507 1.85-.408 11.733-.388 13.68.027 2.614.559 3.073 1.96 1.14 3.48-1.466 1.154-1.497 1.383-.403 3.031.9 1.355.83 2.338-.296 4.247-.59 1-.573 1.291.225 3.814 1.776 5.613 2.23 8.614 2.362 15.601.07 3.758.238 7.284.372 7.836.134.552 1.173 1.982 2.31 3.178 1.136 1.195 2.478 3.103 2.983 4.239.914 2.056.919 2.179 1.034 27.078.127 27.624.215 44.921-2.467 46.178-1.294.607-2.056.642-14.177.642-11.805 0-12.908-.047-14.081-.597z" fill="#35495e" stroke="#35495e" stroke-width="3.815" /></svg>
+            </div>
+            <div class="navbar-id-name">
+              Vue Beers - A Vue.js tutorial
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-separator" > </div>
+
+  <warp10-conf conf="doc"></warp10-conf>
+
+  <div id="mainbody">
+
+  <div class="container top-10" id="main-container">
+    <div class="row">
+      
+    <div id="sidebar" class="col-sm-3 collapse">
+      
+        <div class="panel-group" id="side-menu">
+      
+            <div id="panel-steps" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-steps">
+                    Steps
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-steps" class="panel-collapse collapse  in ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/">
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/">
+                </a>
+            </div>
+        
+        </div>
+    </div>
+        
+            <div id="panel-solutions" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-solutions">
+                Solutions
+            </a>
+            </h4>
+        </div>
+        <div id="collapse-solutions" class="panel-collapse collapse ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/solution/"
+                    target="_blank">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/solution/"
+                    target="_blank">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/solution/"
+                    target="_blank">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/solution/"
+                    target="_blank">
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/solution/"
+                    target="_blank">
+                </a>
+                
+            </div>
+        
+        </div>
+    </div>
+        
+      
+      
+        </div>
+      
+     </div>
+      
+      <div class="col-sm-9">
+        <h1>Creating your first Vue.js app</h1>
+        <p>In this step we are going to create our first Vue.js application, and use the databinding to add some dynamism to our beer list construction.</p>
+
+<h2 id="installing-vuejs">Installing Vue.js</h2>
+
+<blockquote>
+  <p>If you don’t have <code class="highlighter-rouge">npm</code> installed in your computer, you can simply skip this section and get your dependencies in the <code class="highlighter-rouge">node_modules</code> folder at the root of the repository. The solutions for each step do indeed use that folder, and the global <code class="highlighter-rouge">package.json</code> file.</p>
+</blockquote>
+
+<p>In this step we are adding one dependency, to the Vue.js bundle. 
+First you need to initialize a npm project at your <code class="highlighter-rouge">app</code> folder:</p>
+
+<pre><code class="language-none">$ npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install &lt;pkg&gt;` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (vue-beers) 
+version: (1.0.0) 
+description: Vue Beers - A Vue.js tutorial
+entry point: (index.js) 
+test command: 
+git repository: https://github.com/LostInBrittany/vue-beers/
+keywords: Vue.js, vue, beers, tutorial, beers tutorial
+author: Horacio Gonzalez &lt;horacio.gonzalez@gmail.com&gt;
+license: (ISC) Apache-2.0
+[...]
+
+</code></pre>
+
+<p>It will generate a <code class="highlighter-rouge">package.json</code> configuration file:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"vue-beers"</span><span class="p">,</span>
+  <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+  <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"Vue Beers - A Vue.js tutorial"</span><span class="p">,</span>
+  <span class="s2">"main"</span><span class="p">:</span> <span class="s2">"index.js"</span><span class="p">,</span>
+  <span class="s2">"scripts"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"test"</span><span class="p">:</span> <span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span>
+  <span class="p">},</span>
+  <span class="s2">"repository"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"git"</span><span class="p">,</span>
+    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"git+https://github.com/LostInBrittany/vue-beers.git"</span>
+  <span class="p">},</span>
+  <span class="s2">"keywords"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"Vue.js"</span><span class="p">,</span>
+    <span class="s2">"vue"</span><span class="p">,</span>
+    <span class="s2">"beers"</span><span class="p">,</span>
+    <span class="s2">"tutorial"</span><span class="p">,</span>
+    <span class="s2">"beers"</span><span class="p">,</span>
+    <span class="s2">"tutorial"</span>
+  <span class="p">],</span>
+  <span class="s2">"author"</span><span class="p">:</span> <span class="s2">"Horacio Gonzalez &lt;horacio.gonzalez@gmail.com&gt;"</span><span class="p">,</span>
+  <span class="s2">"license"</span><span class="p">:</span> <span class="s2">"Apache-2.0"</span><span class="p">,</span>
+  <span class="s2">"bugs"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://github.com/LostInBrittany/vue-beers/issues"</span>
+  <span class="p">},</span>
+  <span class="s2">"homepage"</span><span class="p">:</span> <span class="s2">"https://github.com/LostInBrittany/vue-beers#readme"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now you can install Vue.js as a node module for this project:</p>
+
+<pre><code class="language-none">$ npm install vue --save
+npm notice created a lockfile as package-lock.json. You should commit this file.
++ vue@2.5.16
+added 1 package from 1 contributor in 0.602s
+</code></pre>
+
+<blockquote>
+  <p>The <code class="highlighter-rouge">--save</code> is not necessary in recent versions of <code class="highlighter-rouge">npm</code></p>
+</blockquote>
+
+<p>In order to make your app prettier, install also the <code class="highlighter-rouge">bootstrap</code> package:</p>
+
+<pre><code class="language-none">$ npm install bootstrap
+</code></pre>
+
+<h2 id="loading-vuejs">Loading Vue.js</h2>
+
+<p>Now you need to load the Vue library in your application. You can do it
+simply by using a <code class="highlighter-rouge">script</code> call:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./node_modules/vue/dist/vue.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>or if you are using the global `node_modules folder,</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'../../node_modules/vue/dist/vue.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Also add Bootstrap CSS:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"./node_modules/bootstrap/dist/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="the-vue-application">The Vue application</h2>
+
+<p>Now we are adding a vue application to our HTML page, and using it
+to display the list of beers.</p>
+
+<p>Every Vue application starts by creating a new Vue instance with the Vue function:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">vm</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="c1">// options</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>When you create a Vue instance, you pass in an options object. A Vue application consists of a root Vue instance created with new Vue, optionally organized into a tree of nested, reusable components.</p>
+
+<h2 id="our-first-vue-app">Our first Vue app</h2>
+
+<p>At the core of Vue.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax.</p>
+
+<p>Let’s begin by the HTML part of the app, i.e. un HTML avec un <code class="highlighter-rouge">id</code> that will be the anchor for the Vue app, inside of which you can use the <em>mustache</em> syntax (double curly braces) to bind data to the <code class="highlighter-rouge">data</code> object of the Vue application:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+  {{ message }}
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<p>And then we can create a Vue app, with a <code class="highlighter-rouge">data</code> object where we declare the properties exposed by the application, and an <code class="highlighter-rouge">el</code> string defining the <code class="highlighter-rouge">id</code> of the HTML element that will be used to render the application:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">el</span><span class="p">:</span> <span class="s1">'#app'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s1">'Vue Beers'</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>We have already created our very first Vue app! This looks pretty similar to rendering a string template, but Vue has done a lot of work under the hood. The data and the DOM are now linked, and everything is now reactive. How do we know? Open your browser’s JavaScript console (right now, on this page) and set app.message to a different value. You should see the rendered example beneath update accordingly:</p>
+
+<div class="demo">
+    <div id="app-01">
+        {{message}}
+    </div>
+</div>
+
+<script>
+var app = new Vue({
+    el: '#app-01',
+    data: {
+    message: 'Vue Beers',
+    }
+})
+</script>
+
+<h2 id="data-object">Data object</h2>
+
+<p>When a Vue instance is created, it adds all the properties found in its <code class="highlighter-rouge">data</code> object to Vue’s reactivity system. When the values of those properties change, the view will <em>react</em>, updating to match the new values.</p>
+
+<p>In our case, the <em>data</em> for this step will have a JavaScript version of the current beer list:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s1">'Vue Beers'</span><span class="p">,</span>
+    <span class="na">beers</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="na">alcohol</span><span class="p">:</span> <span class="mf">8.5</span><span class="p">,</span>
+            <span class="na">name</span><span class="p">:</span> <span class="s2">"Affligem Tripel"</span><span class="p">,</span>
+            <span class="na">description</span><span class="p">:</span> <span class="s2">"The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="na">alcohol</span><span class="p">:</span> <span class="mf">9.2</span><span class="p">,</span>
+            <span class="na">name</span><span class="p">:</span> <span class="s2">"Rochefort 8"</span><span class="p">,</span>
+            <span class="na">description</span><span class="p">:</span> <span class="s2">"A dry but rich flavoured beer with complex fruity and spicy flavours."</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="na">alcohol</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+            <span class="na">name</span><span class="p">:</span> <span class="s2">"Chimay Rouge"</span><span class="p">,</span>
+            <span class="na">description</span><span class="p">:</span> <span class="s2">"This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Let’s say, for example, that we want to display the fist beer in the beer list. We can modify the HTML to show it:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"demo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'app'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>{{ message }}<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;div&gt;</span>Beer 0 name: {{ beers[0].name }}<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<p>And you should get:</p>
+
+<div class="demo">
+    <div id="app-02">
+        <h1>{{ message }}</h1>
+        <div>Beer 0 name: {{ beers[0].name }}</div>
+    </div>
+</div>
+
+<script>
+var app = new Vue({
+    el: '#app-02',
+    data: {
+        message: 'Vue Beers',
+        beers:[
+            {
+                alcohol: 8.5,
+                name: "Affligem Tripel",
+                description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+            },
+            {
+                alcohol: 9.2,
+                name: "Rochefort 8",
+                description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+            },
+            {
+                alcohol: 7,
+                name: "Chimay Rouge",
+                description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+            }
+        ],        
+    }
+})
+</script>
+
+<p>So if we want to recreate the same list than in <a href="../step-01">previous step</a>, you can simply use the same syntax:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"demo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'app'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>{{ message }}<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;ul&gt;</span>
+            <span class="nt">&lt;li&gt;</span>
+                <span class="nt">&lt;span&gt;</span>{{ beers[0].name }}<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;p&gt;</span>{{ beers[0].description }}.<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;</span>
+                <span class="nt">&lt;span&gt;</span>{{ beers[1].name }}<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;p&gt;</span>{{ beers[1].description }}.<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;</span>
+                <span class="nt">&lt;span&gt;</span>{{ beers[2].name }}<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;p&gt;</span>{{ beers[2].description }}.<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<p>And you have the same app:</p>
+
+<div class="container demo">
+    <div id="app-03">
+        <h1>{{ message }}</h1>
+        <ul>
+            <li>
+                <span>{{ beers[0].name }}</span>
+                <p>{{ beers[0].description }}.</p>
+            </li>
+            <li>
+                <span>{{ beers[1].name }}</span>
+                <p>{{ beers[1].description }}.</p>
+            </li>
+            <li>
+                <span>{{ beers[2].name }}</span>
+                <p>{{ beers[2].description }}.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+var app = new Vue({
+    el: '#app-03',
+    data: {
+        message: 'Vue Beers',
+        beers:[
+            {
+                alcohol: 8.5,
+                name: "Affligem Tripel",
+                description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+            },
+            {
+                alcohol: 9.2,
+                name: "Rochefort 8",
+                description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+            },
+            {
+                alcohol: 7,
+                name: "Chimay Rouge",
+                description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+            }
+        ],        
+    }
+})
+</script>
+
+<p>Well, it doesn’t seem very exciting yet, does it? In the next step, <a href="../step-03/">step-03</a>, you will learn how to iterate on the <code class="highlighter-rouge">beers</code> property of the data object to automatically generate the beer list.</p>
+
+        <div class='before-solution-next'>
+
+    
+        <div class='before'><a href="/vue-beers/step-01/">Previous</a></div>
+    
+    
+        <div class='solution'><a href="/vue-beers/step-02/solution/" target="_blank">Solution</a></div>
+    
+    
+    
+        <div class='next'><a href="/vue-beers/step-03/">Next</a></div>
+    
+</div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+<footer>
+    <div> <hr> </div>
+
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 center">
+            <h3>
+                <a href="https://medium.com/helloexoworld">
+                    <i class="fab fa-medium-m fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://twitter.com/helloexoworld">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://github.com/helloexoworld">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://groups.google.com/forum/#!forum/helloexoworld">
+                    <i class="fas fa-envelope fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a target="_blank" href="https://twitter.com/home?status=Hey%20%40HelloExoWorld,%20I%20would%20like%20to%20have%20an%20invitation%20to%20join%20Slack!">
+                    <i class="fab fa-slack fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+    <div class="small center">
+        &copy; 2018 - <a href="https://helloexo.world/">Association HelloExoWorld</a></div>
+
+    </div>
+</footer>
+</body>
+</html>
