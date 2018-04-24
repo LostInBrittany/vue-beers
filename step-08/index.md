@@ -42,6 +42,79 @@ template: `
 `;
 ```
 
+Let's add some CSS to make that prettier:
+
+```css
+.detail {
+margin: 10px;
+padding: 10px;
+border: solid 1px black;
+border-radius: 10px;
+min-height: 150px;
+}
+.detail .back {
+width: 50px;
+height: 50px;
+}
+.detail .img {
+float: left;
+border: 1px solid black;
+margin-right: 3em;
+margin-bottom: 2em;
+background-color: white;
+padding: 2em;
+height: 400px;
+width: 400px;
+}
+.detail .alcohol {
+clear:both;
+}
+
+.detail ul.beer-thumbs {
+margin: 0;
+list-style: none;
+}
+
+.detail ul.beer-thumbs li {
+border: 1px solid black;
+display: inline-block;
+margin: 1em;
+background-color: white;
+}
+
+.detail ul.beer-thumbs img {
+height: 100px;
+width: 100px;
+padding: 1em;
+}
+
+.detail ul.specs {
+clear: both;
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+.detail ul.specs > li{
+display: inline-block;
+width: 200px;
+vertical-align: top;
+}
+
+.detail ul.specs > li > span{
+font-weight: bold;
+font-size: 1.2em;
+}
+
+.detail ul.specs dt {
+font-weight: bold;
+}
+
+.detail h1 {
+border-bottom: 1px solid gray;
+}
+```
+
 We define a `beer` object in the `data`:
 
 ```javascript
@@ -172,5 +245,8 @@ In Vue we can do it with the `v-on` directive:
             this.mainImg = `../../data/${img}`;
         },
     },
-
 ```
+
+And now you have your shiny new app with all the details!
+
+{% include step-08/step-08_01.html %}

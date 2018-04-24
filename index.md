@@ -12,7 +12,7 @@ title: Vue Beers - A Vue.js tutorial
 ![Logo]({{ "/img" | prepend: site.baseurl }}/logo-500px.png)
 
 
-I have built this [Vue Beers](https://lostinbrittany.github.com/io/vue-beers) tutorial as a quick entry point to [Vue.js](https://vuejs.org/). I've based it on a similar tutorial I did for [Angular](https://angular.io/) and [Polymer](https://www.polymer-project.org/), [Angular Beers](https://github.com/LostInBrittany/angular-beers) and  [Polymer Beers](https://github.com/LostInBrittany/polymer-beers).  
+I have built this [Vue Beers](https://lostinbrittany.github.com/vue-beers) tutorial as a quick entry point to [Vue.js](https://vuejs.org/). I've based it on a similar tutorial I did for [Angular](https://angular.io/) and [Polymer](https://www.polymer-project.org/), [Angular Beers](https://github.com/LostInBrittany/angular-beers) and  [Polymer Beers](https://github.com/LostInBrittany/polymer-beers).  
 
 For the last several years, I've taught a web-development module in an Engineering School with a rather restrictive network. As I plan to use this tutorial in next year module, in order to explain Vue.js to our students, I needed a tutorial that could be played without network acces, i.e. without npm. So *Vue Beers* needed to be able to be done even behind a very restrictive proxy, and all the dependencies are included inside the git project.
 

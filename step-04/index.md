@@ -66,7 +66,7 @@ In the template we use value to link the `input` event of the `input` item to th
     <!--Sidebar content-->
     <div>Search:</div> 
     <div>
-        <input id="searchInput" v-model="{{filterText}}">
+        <input id="searchInput" v-model="filterText">
     </div>    
     <div>
         <div>Current search:</div>
@@ -74,6 +74,36 @@ In the template we use value to link the `input` event of the `input` item to th
     </div>
 </div>
 {% endraw %}
+```
+
+when testing that you will learn that Vue.js templates need to have a single main tag, not two, so you will need to rewrite your whole template:
+
+```html
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div>Search:</div> 
+            <div>
+                <input id="searchInput" v-model="filterText">
+            </div>
+            <div>
+                <div>Current search:</div>
+                <div>{{filterText}}</div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="beers">
+                <div class="beer" 
+                        v-for="beer in beers">
+                    <beer-list-item 
+                        v-bind:name='beer.name'
+                        v-bind:description='beer.description'>
+                    </beer-list-item>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
 ```
 
 And now we have a two-way data-binding between the input field and the label under it.

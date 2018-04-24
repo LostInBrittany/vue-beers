@@ -70,7 +70,7 @@ window.VueBeers.beerList = {
 You begin by loading the component file:
 
 ```html
-<script src="./beer-list.js"></script>
+<script src="./components/beer-list.js"></script>
 ```
 
 And then, there are two ways to use the component in our main app:
