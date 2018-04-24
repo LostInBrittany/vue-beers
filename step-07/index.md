@@ -92,6 +92,7 @@ We need:
 In order to get more details on a beer on `beer-list-item` when we click on its name, we need to put the name inside a `<router-link >` tag that will send us to the route corresponding to that beer:
 
 ```html
+{% raw %}
 template: `
 <div v-bind:id="id" class="clearfix">
     <router-link v-bind:to="detailUrl">
@@ -102,6 +103,7 @@ template: `
     </router-link>
 </div>
 `,
+{% endraw %}
 ```
 
 Where `detailUrl` is a computed property:
@@ -132,6 +134,7 @@ In the definition of the route for `/beer/:id` we can simply add an element on t
 
 
 ```javascript
+{% raw %}
 const routes = [
     { path: '/', component: VueBeers.beerList },
     { path: '/beer/:id', component: { 
@@ -141,6 +144,7 @@ const routes = [
             </div>`
     }},
 ]
+{% endraw %}
 ```
 
 And we have a working router in our app!

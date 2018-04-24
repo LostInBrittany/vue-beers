@@ -24,10 +24,10 @@ template: `
 
     <ul class="beer-thumbs">
     <li>
-        <img v-bind:src="beerImg" on-click="setImage">
+        <img v-bind:src="beerImg">
     </li>
     <li>
-        <img v-bind:src="beerLabel" on-click="setImage">
+        <img v-bind:src="beerLabel">
     </li>
     </ul>
     <ul class="specs">
@@ -58,7 +58,7 @@ you can query the server from the `mounted` lifecycle hook:
 
 ```javascript
 mounted: function() {
-    getBeerDetils($route.params.id);
+    getBeerDetails($route.params.id);
 }
 ```
 
@@ -73,7 +73,44 @@ To react to params changes in the same component, you need to `watch` the `$rout
 ```javascript
   watch: {
     '$route' (to, from) {
-        getBeerDetils(to.params.id);
+        getBeerDetails(to.params.id);
     }
   }
+```
+
+## Gettin the beer details
+
+To get the details of a beer whose `id` is `xxx` we need to recover the file `{{site.baseurl}}/data/beers/details/xxx.json`. In the `getBeerDetails` method we are going to use again the Fetch API to recover the data, and initialise the `beer` data object with the details:
+
+```javascript
+   methods: {
+        getBeerDetails: async function(id) {
+            let fetchResult
+            fetchResult = await fetch(`../../data/beers/details/${id}.json`);
+            if (fetchResult.status == 200) {
+                this.beer = await fetchResult.json();
+            }
+        },
+    },
+```
+
+## Computed properties
+
+In the details we want to display images for both the bottle and the label of the beer. In the JSON data we have a relative path for these images in `beer.img` and `beer.label`, but we need to adapt them to our application. The simplest way to do it is using two computed properties, `imgUrl` and `labelUrl`:
+
+```javascript
+    computed: {
+        imgUrl: function() {
+            if (!this.beer.img) {
+                return;
+            }
+            return `../../data/${this.beer.img}`;
+        },
+        labelUrl: function() {
+            if (!this.beer.label) {
+                return;
+            }
+            return `../../data/${this.beer.label}`;
+        },
+    },
 ```

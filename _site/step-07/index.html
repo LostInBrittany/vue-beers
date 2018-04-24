@@ -305,16 +305,18 @@ simply by using a <code class="highlighter-rouge">script</code> call:</p>
 
 <p>In order to get more details on a beer on <code class="highlighter-rouge">beer-list-item</code> when we click on its name, we need to put the name inside a <code class="highlighter-rouge">&lt;router-link &gt;</code> tag that will send us to the route corresponding to that beer:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>template: `
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+template: `
 <span class="nt">&lt;div</span> <span class="na">v-bind:id=</span><span class="s">"id"</span> <span class="na">class=</span><span class="s">"clearfix"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;router-link</span> <span class="na">v-bind:to=</span><span class="s">"detailUrl"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"float-right el-img"</span> <span class="na">v-bind:src=</span><span class="s">"imgUrl"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"el-name"</span><span class="nt">&gt;&lt;/h2&gt;</span>
-        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"el-description"</span><span class="nt">&gt;&lt;/p&gt;</span>
-        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"pull-right el-alcohol"</span><span class="nt">&gt;</span>Alcohol content: %<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"el-name"</span><span class="nt">&gt;</span>{{name}}<span class="nt">&lt;/h2&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"el-description"</span><span class="nt">&gt;</span>{{description}}<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"pull-right el-alcohol"</span><span class="nt">&gt;</span>Alcohol content: {{alcohol}}%<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/router-link&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 `,
+
 </code></pre></div></div>
 
 <p>Where <code class="highlighter-rouge">detailUrl</code> is a computed property:</p>
@@ -342,15 +344,17 @@ Later in next step we will see how to show a different page when the beer detail
 
 <p>In the definition of the route for <code class="highlighter-rouge">/beer/:id</code> we can simply add an element on the fly:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="s1">'/'</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="nx">VueBeers</span><span class="p">.</span><span class="nx">beerList</span> <span class="p">},</span>
     <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="s1">'/beer/:id'</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="p">{</span> 
         <span class="na">template</span><span class="p">:</span> <span class="s2">`
             &lt;div&gt;
-                Here Here you will get the details for 
+                Here Here you will get the details for {{ $route.params.id }}
             &lt;/div&gt;`</span>
     <span class="p">}},</span>
 <span class="p">]</span>
+
 </code></pre></div></div>
 
 <p>And we have a working router in our app!</p>
