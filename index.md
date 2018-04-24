@@ -75,7 +75,7 @@ As the computers used for the course haven't Git, we have structured the project
 1. [Filtering](./step-04/)
 1. [Sorting](./step-05/)
 1. [Calling the server](./step-06/)
-1. [Routing URLs using App Router](./step-07/)
+1. [Routing URLs using vue-router](./step-07/)
 
 In each step directory you have a README file that explain the objective of the step, that you will do in the working directory `app`. If you have problems or if you get lost, you also have the solution of each step in a `solution` folder inside the the step folder. So if you want to see the intended result of the 6th step, you can point your browser to http://localhost:8000/step-06/solution/index.html
 
