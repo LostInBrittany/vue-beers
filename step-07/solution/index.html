@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue Beers Gallery</title>
+  <script src='../../node_modules/vue/dist/vue.js'></script>
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+
+  <script src='../../node_modules/vue-router/dist/vue-router.js'></script>
+  <script src='./components/beer-list.js'></script>
+  <script src='./components/beer-list-item.js'></script>
+  <style>
+    #searchInput {
+        max-width: 100%;
+        width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+    .beer .alcohol {
+        float: right;
+    }
+    .beer .name {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .beer .description {
+        margin-bottom: 2rem;
+    }
+    .container {
+        max-width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+
+    .beer {
+        margin: 10px;
+        padding: 10px;
+        border: solid 1px black;
+        border-radius: 10px;
+        min-height: 150px;
+    }
+    .beer a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .el-img {
+        max-height: 100px;
+    }
+    .el-alcohol {
+        clear:both;
+    }
+  </style>
+</head>
+
+<body>
+
+    <div class="container demo">
+        <div id='app'>
+            <h1>{{ message }}</h1>
+            <router-view></router-view>
+        </div>
+    </div>
+    
+    
+    <script>
+    // 1. Define route components.
+    // These can be imported from other files
+    Vue.component('beer-list', VueBeers.beerList);
+    Vue.component('beer-list-item', VueBeers.beerListItem);
+
+    // 2. Define some routes
+    // Each route should map to a component. The "component" can
+    // either be an actual component constructor created via
+    // `Vue.extend()`, or just a component options object.
+    // We'll talk about nested routes later.
+    const routes = [
+        { path: '/', component: VueBeers.beerList },
+        { path: '/beer/:id', component: { 
+            template: `
+                <div>
+                    Here you will get the details for {{ $route.params.id }}
+                </div>`
+        }},
+    ]
+
+    // 3. Create the router instance and pass the `routes` option
+    // You can pass in additional options here, but let's
+    // keep it simple for now.
+    const router = new VueRouter({
+        routes // short for `routes: routes`
+    })
+
+    // 4. Create and mount the root instance.
+    // Make sure to inject the router with the router option to make the
+    // whole app router-aware.    
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Vue Beers',
+        },
+        router,
+    })
+    </script>
+</body>
+
+</html>

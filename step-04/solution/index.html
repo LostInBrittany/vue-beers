@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue Beers Gallery</title>
+  <script src='../../node_modules/vue/dist/vue.js'></script>
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+  <script src='./components/beer-list.js'></script>
+  <script src='./components/beer-list-item.js'></script>
+  <style>
+    #searchInput {
+        max-width: 100%;
+        width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+    <div class="container demo">
+        <div id='app'>
+            <h1>{{ message }}</h1>
+            <beer-list></beer-list>
+        </div>
+    </div>
+    
+    
+    <script>
+    Vue.component('beer-list', VueBeers.beerList);
+    Vue.component('beer-list-item', VueBeers.beerListItem);
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Vue Beers',
+        }
+    })
+    </script>
+</body>
+
+</html>

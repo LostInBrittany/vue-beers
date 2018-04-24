@@ -1,0 +1,95 @@
+.navbar-separator {
+    width:100%;
+    height:85px;
+}
+
+.navbar-inverse {
+     background-color: #42b883;
+     background-image: linear-gradient(to bottom, #42b883 0%, #42b883 100%);
+     border-color: #220000;
+}
+
+
+.navbar-inverse .navbar-link,
+.navbar-inverse .navbar-text,
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav li a
+{
+  color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover {
+    background-color: #aaeeff;
+    background-image: linear-gradient(to bottom, #aaeeff 0%, #aaeeff 100%);
+    color: #404040;
+}
+.navbar-inverse .navbar-brand {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.navbar-inverse .navbar-brand .small {
+    font-size: 1.5rem;
+}
+
+
+#icon {
+  font-size: 2em;
+}
+
+.navbar-id-icon span{
+    margin-right: 0.5em;
+}
+
+.navbar-id div {
+  display: inline-block;
+}
+
+
+.navbar, .navbar-header, .navbar-brand, .navbar-id, .navbar .container {
+  min-height: 85px;
+}
+
+.navbar-brand {
+  padding: 0px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar-inverse .navbar-toggle {
+    border: 0;
+}
+
+.navbar-id {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding-right: 10px;
+}
+.navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 75px;
+}
+
+.navbar-nav > div {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 75px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+  }
+
+.navbar .logo {
+    width: 64px;
+    height: 64px;
+    margin: 10px;
+}
+
+.navbar-header {
+    display: flex;
+    align-items: center;
+}

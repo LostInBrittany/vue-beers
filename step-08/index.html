@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title> Vue Beers - VueJS tutorial - Displaying beer details </title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  
+    <style>
+      body {
+        background-color: #eeeeee;
+      }
+    </style>
+
+    <link rel="stylesheet" 
+        href="/vue-beers/assets/bootstrap/bootstrap.min.css">
+
+    <script src="/vue-beers/assets/jquery/jquery.js"></script>
+    <script src="/vue-beers/assets/bootstrap/bootstrap.js"></script>
+
+    <script src='/vue-beers/node_modules/vue/dist/vue.js'></script>
+    <script src='/vue-beers/node_modules/vue-router/dist/vue-router.js'></script>
+
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers.css">
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers-navbar.css">
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/vue-beers/css/syntax.css">
+  
+
+    <script defer 
+        src="/vue-beers/assets/font-awesome/releases/v5.0.6/js/all.js"></script>
+
+    <style>
+      :host {
+        display: block;
+      }
+      .top-10 { margin-top:10px; }
+      h4 {
+        font-weight: bold;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  
+<body>
+  <warp10-embeddable-quantum-conf 
+    backend='{"id":"helloexoworld","label":"HelloExo.World","url":""}' 
+    debug></warp10-embeddable-quantum-conf>
+  
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <!--
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      -->
+        <button type="button" 
+            class="navbar-toggle toggle collapsed" 
+            data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/vue-beers/">
+          <div class="navbar-id">
+            <div class="navbar-id-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 200 200"><circle cx="100" cy="100" r="98.121" fill="#fff"/><path fill="#42b883" d="M32.065 35.392l68.095 117.945 68.095-117.945h-52.368L100.16 62.627 84.433 35.392z"/><path fill="#35495e" d="M59.3 35.392l40.86 70.766 40.86-70.766h-25.133L100.16 62.627 84.433 35.392z"/><path d="M134.029 167.673c-2.754-1.292-2.653-18.566-2.653-45.001 0-20.536.091-24.219.654-26.311.703-2.621 1.691-4.36 3.476-6.12 2.49-2.455 2.55-2.684 2.663-10.29.106-7.092.713-11.485 2.158-15.608 1.033-2.952 1.1-3.803.385-4.868-.827-1.23-.844-2.89-.042-4.073.893-1.316.776-1.88-.617-2.976-1.916-1.507-1.397-2.914 1.294-3.507 1.85-.408 11.733-.388 13.68.027 2.614.559 3.073 1.96 1.14 3.48-1.466 1.154-1.497 1.383-.403 3.031.9 1.355.83 2.338-.296 4.247-.59 1-.573 1.291.225 3.814 1.776 5.613 2.23 8.614 2.362 15.601.07 3.758.238 7.284.372 7.836.134.552 1.173 1.982 2.31 3.178 1.136 1.195 2.478 3.103 2.983 4.239.914 2.056.919 2.179 1.034 27.078.127 27.624.215 44.921-2.467 46.178-1.294.607-2.056.642-14.177.642-11.805 0-12.908-.047-14.081-.597z" fill="#35495e" stroke="#35495e" stroke-width="3.815" /></svg>
+            </div>
+            <div class="navbar-id-name">
+              Vue Beers - A Vue.js tutorial
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-separator" > </div>
+
+  <warp10-conf conf="doc"></warp10-conf>
+
+  <div id="mainbody">
+
+  <div class="container top-10" id="main-container">
+    <div class="row">
+      
+    <div id="sidebar" class="col-sm-3 collapse">
+      
+        <div class="panel-group" id="side-menu">
+      
+            <div id="panel-steps" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-steps">
+                    Steps
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-steps" class="panel-collapse collapse  in ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/">
+                    Filtering
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/">
+                    Sorting
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-06/">
+                    Calling the server
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-07/">
+                    Routing URLs using vue-router
+                </a>
+            </div>
+        
+        </div>
+    </div>
+        
+            <div id="panel-solutions" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-solutions">
+                Solutions
+            </a>
+            </h4>
+        </div>
+        <div id="collapse-solutions" class="panel-collapse collapse ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/solution/"
+                    target="_blank">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/solution/"
+                    target="_blank">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/solution/"
+                    target="_blank">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/solution/"
+                    target="_blank">
+                    Filtering
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/solution/"
+                    target="_blank">
+                    Sorting
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-06/solution"
+                    target="_blank">
+                    Calling the server
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-07/solution"
+                    target="_blank">
+                    Routing URLs using vue-router
+                </a>
+                
+            </div>
+        
+        </div>
+    </div>
+        
+      
+      
+        </div>
+      
+     </div>
+      
+      <div class="col-sm-9">
+        <h1>Displaying beer details</h1>
+        <p>Now we are going to have two different “pages” (or <em>views</em>) in our Vue Beers application, one for the beer list and another for a single beer detail.</p>
+
+<h2 id="beer-detail-component">Beer detail component</h2>
+
+<p>We are going to create a <code class="highlighter-rouge">beer-detail</code> component that calls to a <em>beer details</em> service (or in these case, a set of <em>beer details</em> JSON files) to recover and show more information on the chosen beer.</p>
+
+<p>The template includes more beer properties, found in the detailed JSON file for each beer. We will use the Fetch API to get the file according to the beer id.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>template: `
+<span class="nt">&lt;div</span> <span class="na">v-bind:id=</span><span class="s">"beer.id"</span> <span class="na">class=</span><span class="s">"detail clearfix"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#/beers"</span><span class="nt">&gt;&lt;img</span> <span class="na">class=</span><span class="s">"pull-right back"</span> <span class="na">src=</span><span class="s">"./img/back.png"</span><span class="nt">&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;&lt;/h1&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"pull-right img"</span> <span class="na">v-bind:src=</span><span class="s">"mainImg"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;&lt;/p&gt;</span>
+
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"beer-thumbs"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">v-bind:src=</span><span class="s">"beerImg"</span> <span class="na">on-click=</span><span class="s">"setImage"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">v-bind:src=</span><span class="s">"beerLabel"</span> <span class="na">on-click=</span><span class="s">"setImage"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"specs"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;dl&gt;</span>
+        <span class="nt">&lt;dt&gt;</span>Alcohol content<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd&gt;</span>%<span class="nt">&lt;/dd&gt;</span>
+        <span class="nt">&lt;/dl&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    [...]
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+`;
+</code></pre></div></div>
+
+<p>We define a <code class="highlighter-rouge">beer</code> object in the <code class="highlighter-rouge">data</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">data</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>  
+        <span class="na">beer</span><span class="p">:</span> <span class="p">{},</span> 
+    <span class="p">};</span>
+<span class="p">},</span>
+</code></pre></div></div>
+
+<p>And in order to get the details on the current beer as soon as possible, 
+you can query the server from the <code class="highlighter-rouge">mounted</code> lifecycle hook:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">mounted</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">getBeerDetils</span><span class="p">(</span><span class="nx">$route</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="reacting-to-params-changes">Reacting to Params Changes</h2>
+
+<p>One thing to note when using routes with params is that when the user navigates from <code class="highlighter-rouge">/beer/AffligemBlond</code> to <code class="highlighter-rouge">/beer/Rochefort8</code>, the same component instance will be reused. Since both routes render the same component, this is more efficient than destroying the old instance and then creating a new one. However, this also means that the lifecycle hooks of the component will not be called.</p>
+
+<p>To react to params changes in the same component, you need to <code class="highlighter-rouge">watch</code> the <code class="highlighter-rouge">$route</code> object and query again the server to get the details:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">watch</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'$route'</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="k">from</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">getBeerDetils</span><span class="p">(</span><span class="nx">to</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+        <div class='before-solution-next'>
+
+    
+        <div class='before'><a href="/vue-beers/step-07/">Previous</a></div>
+    
+    
+        <div class='solution'><a href="/vue-beers/step-08/solution/" target="_blank">Solution</a></div>
+    
+    
+    
+</div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+<footer>
+    <div> <hr> </div>
+
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 center">
+            <h3>
+                <a href="https://medium.com/helloexoworld">
+                    <i class="fab fa-medium-m fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://twitter.com/helloexoworld">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://github.com/helloexoworld">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://groups.google.com/forum/#!forum/helloexoworld">
+                    <i class="fas fa-envelope fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a target="_blank" href="https://twitter.com/home?status=Hey%20%40HelloExoWorld,%20I%20would%20like%20to%20have%20an%20invitation%20to%20join%20Slack!">
+                    <i class="fab fa-slack fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+    <div class="small center">
+        &copy; 2018 - <a href="https://helloexo.world/">Association HelloExoWorld</a></div>
+
+    </div>
+</footer>
+</body>
+</html>

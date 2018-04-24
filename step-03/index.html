@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title> Vue Beers - VueJS tutorial - Iterating the list </title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  
+    <style>
+      body {
+        background-color: #eeeeee;
+      }
+    </style>
+
+    <link rel="stylesheet" 
+        href="/vue-beers/assets/bootstrap/bootstrap.min.css">
+
+    <script src="/vue-beers/assets/jquery/jquery.js"></script>
+    <script src="/vue-beers/assets/bootstrap/bootstrap.js"></script>
+
+    <script src='/vue-beers/node_modules/vue/dist/vue.js'></script>
+    <script src='/vue-beers/node_modules/vue-router/dist/vue-router.js'></script>
+
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers.css">
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers-navbar.css">
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/vue-beers/css/syntax.css">
+  
+
+    <script defer 
+        src="/vue-beers/assets/font-awesome/releases/v5.0.6/js/all.js"></script>
+
+    <style>
+      :host {
+        display: block;
+      }
+      .top-10 { margin-top:10px; }
+      h4 {
+        font-weight: bold;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  
+<body>
+  <warp10-embeddable-quantum-conf 
+    backend='{"id":"helloexoworld","label":"HelloExo.World","url":""}' 
+    debug></warp10-embeddable-quantum-conf>
+  
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <!--
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      -->
+        <button type="button" 
+            class="navbar-toggle toggle collapsed" 
+            data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/vue-beers/">
+          <div class="navbar-id">
+            <div class="navbar-id-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 200 200"><circle cx="100" cy="100" r="98.121" fill="#fff"/><path fill="#42b883" d="M32.065 35.392l68.095 117.945 68.095-117.945h-52.368L100.16 62.627 84.433 35.392z"/><path fill="#35495e" d="M59.3 35.392l40.86 70.766 40.86-70.766h-25.133L100.16 62.627 84.433 35.392z"/><path d="M134.029 167.673c-2.754-1.292-2.653-18.566-2.653-45.001 0-20.536.091-24.219.654-26.311.703-2.621 1.691-4.36 3.476-6.12 2.49-2.455 2.55-2.684 2.663-10.29.106-7.092.713-11.485 2.158-15.608 1.033-2.952 1.1-3.803.385-4.868-.827-1.23-.844-2.89-.042-4.073.893-1.316.776-1.88-.617-2.976-1.916-1.507-1.397-2.914 1.294-3.507 1.85-.408 11.733-.388 13.68.027 2.614.559 3.073 1.96 1.14 3.48-1.466 1.154-1.497 1.383-.403 3.031.9 1.355.83 2.338-.296 4.247-.59 1-.573 1.291.225 3.814 1.776 5.613 2.23 8.614 2.362 15.601.07 3.758.238 7.284.372 7.836.134.552 1.173 1.982 2.31 3.178 1.136 1.195 2.478 3.103 2.983 4.239.914 2.056.919 2.179 1.034 27.078.127 27.624.215 44.921-2.467 46.178-1.294.607-2.056.642-14.177.642-11.805 0-12.908-.047-14.081-.597z" fill="#35495e" stroke="#35495e" stroke-width="3.815" /></svg>
+            </div>
+            <div class="navbar-id-name">
+              Vue Beers - A Vue.js tutorial
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-separator" > </div>
+
+  <warp10-conf conf="doc"></warp10-conf>
+
+  <div id="mainbody">
+
+  <div class="container top-10" id="main-container">
+    <div class="row">
+      
+    <div id="sidebar" class="col-sm-3 collapse">
+      
+        <div class="panel-group" id="side-menu">
+      
+            <div id="panel-steps" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-steps">
+                    Steps
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-steps" class="panel-collapse collapse  in ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/">
+                    Filtering
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/">
+                    Sorting
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-06/">
+                    Calling the server
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-07/">
+                    Routing URLs using vue-router
+                </a>
+            </div>
+        
+        </div>
+    </div>
+        
+            <div id="panel-solutions" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-solutions">
+                Solutions
+            </a>
+            </h4>
+        </div>
+        <div id="collapse-solutions" class="panel-collapse collapse ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/solution/"
+                    target="_blank">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/solution/"
+                    target="_blank">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/solution/"
+                    target="_blank">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/solution/"
+                    target="_blank">
+                    Filtering
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/solution/"
+                    target="_blank">
+                    Sorting
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-06/solution"
+                    target="_blank">
+                    Calling the server
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-07/solution"
+                    target="_blank">
+                    Routing URLs using vue-router
+                </a>
+                
+            </div>
+        
+        </div>
+    </div>
+        
+      
+      
+        </div>
+      
+     </div>
+      
+      <div class="col-sm-9">
+        <h1>Iterating the list</h1>
+        <p>In this step we are going to create a more our first Vue component, a custom <code class="highlighter-rouge">beer-list</code>. This component will use a JavaScript array as model and automatically generate a <code class="highlighter-rouge">beer-list-item</code> component for each beer in the array.</p>
+
+<h2 id="creating-the-component-file">Creating the component file</h2>
+
+<p>We begin by creating a new file for the component, <code class="highlighter-rouge">components/beer-list.js</code>.  Inside it we are going to declare a new Vue component, a JS object that is almost like an enclosed mini instance of Vue.</p>
+
+<p>For the moment, on our <code class="highlighter-rouge">beer-list</code> component there is a <code class="highlighter-rouge">data</code> object with the component properties and a <code class="highlighter-rouge">template</code> object with the rendering of the component:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+if (!window.VueBeers) {
+    window.VueBeers = {};
+}
+
+window.VueBeers.beerList = {
+    data: function() {
+        return {    
+            beers:[
+                {
+                    alcohol: 8.5,
+                    name: "Affligem Tripel",
+                    description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+                },
+                {
+                    alcohol: 9.2,
+                    name: "Rochefort 8",
+                    description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+                },
+                {
+                    alcohol: 7,
+                    name: "Chimay Rouge",
+                    description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+                }
+            ],        
+        };
+    },
+    template: `
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;span&gt;</span>{{ beers[0].name }}<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;p&gt;</span>{{ beers[0].description }}.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;span&gt;</span>{{ beers[1].name }}<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;p&gt;</span>{{ beers[1].description }}.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;span&gt;</span>{{ beers[2].name }}<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;p&gt;</span>{{ beers[2].description }}.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    `,
+};   
+
+</code></pre></div></div>
+
+<h2 id="using-the-component-in-our-main-app">Using the component in our main app</h2>
+
+<p>You begin by loading the component file:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./beer-list.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>And then, there are two ways to use the component in our main app:</p>
+
+<ol>
+  <li>Define a new component before creating your Vue instance:</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'beer-list'</span><span class="p">,</span> <span class="nx">VueBeers</span><span class="p">.</span><span class="nx">beerList</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+        <span class="na">el</span><span class="p">:</span> <span class="s1">'#app'</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">message</span><span class="p">:</span> <span class="s1">'Vue Beers'</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<p>And then you can use the <code class="highlighter-rouge">&lt;beer-list&gt;</code> tag in the HTML part of the app:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container demo"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'app'</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1&gt;</span>{{ message }}<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;beer-list&gt;&lt;/beer-list&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    
+</code></pre></div></div>
+
+<p>Then you should obtain:</p>
+
+<script>
+if (!window.VueBeers) {
+    window.VueBeers = {};
+}
+
+window.VueBeers.beerList01 = {
+    data: function() {
+        return {    
+            beers:[
+                {
+                    alcohol: 8.5,
+                    name: "Affligem Tripel",
+                    description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+                },
+                {
+                    alcohol: 9.2,
+                    name: "Rochefort 8",
+                    description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+                },
+                {
+                    alcohol: 7,
+                    name: "Chimay Rouge",
+                    description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+                }
+            ],        
+        };
+    },
+    template: `
+    <ul>
+        <li>
+            <span>{{ beers[0].name }}</span>
+            <p>{{ beers[0].description }}.</p>
+        </li>
+        <li>
+            <span>{{ beers[1].name }}</span>
+            <p>{{ beers[1].description }}.</p>
+        </li>
+        <li>
+            <span>{{ beers[2].name }}</span>
+            <p>{{ beers[2].description }}.</p>
+        </li>
+    </ul>
+    `,
+};   
+</script>
+
+<div class="container demo">
+    <div id="app-01">
+        <h1>{{ message }}</h1>
+        <beer-list></beer-list>
+    </div>
+</div>
+
+<script>
+Vue.component('beer-list', VueBeers.beerList01);
+var app = new Vue({
+    el: '#app-01',
+    data: {
+        message: 'Vue Beers',
+    }
+})
+</script>
+
+<p>So now you’re able to divide your application in atomic components. Let’s add some fun with Vue directives.</p>
+
+<h2 id="using-directives">Using directives</h2>
+
+<p>Directives are special attributes with the <code class="highlighter-rouge">v-</code> prefix. Directive attribute values are expected to be a single JavaScript expression (with the exception for <code class="highlighter-rouge">v-for</code>, which will be discussed later). A directive’s job is to reactively apply side effects to the DOM when the value of its expression changes.</p>
+
+<p>We are going to use the directive <code class="highlighter-rouge">v-for</code> to iterate the <code class="highlighter-rouge">beers</code> data property, and make our view easier to use. We can use the <code class="highlighter-rouge">v-for</code> directive to render a list of items based on an array. The <code class="highlighter-rouge">v-for</code> directive requires a special syntax in the form of <code class="highlighter-rouge">item in items</code>, where <code class="highlighter-rouge">items</code> is the source data array and <code class="highlighter-rouge">item</code> is an alias for the array element being iterated on.</p>
+
+<p>In our case, we can rewrite the template of <code class="highlighter-rouge">beer-list</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    template: `
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">v-for=</span><span class="s">"beer in beers"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span&gt;</span>{{ beer.name }}<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;p&gt;</span>{{ beer.description }}.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    `
+    
+</code></pre></div></div>
+
+<p>And we still have the same rendering:</p>
+
+<script>
+if (!window.VueBeers) {
+    window.VueBeers = {};
+}
+
+window.VueBeers.beerList02 = {
+    data: function() {
+        return {    
+            beers:[
+                {
+                    alcohol: 8.5,
+                    name: "Affligem Tripel",
+                    description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+                },
+                {
+                    alcohol: 9.2,
+                    name: "Rochefort 8",
+                    description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+                },
+                {
+                    alcohol: 7,
+                    name: "Chimay Rouge",
+                    description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+                }
+            ],        
+        };
+    },
+    template: `
+    <ul>
+        <li v-for="beer in beers">
+            <span>{{ beer.name }}</span>
+            <p>{{ beer.description }}.</p>
+        </li>
+    </ul>
+    `,
+};   
+</script>
+
+<div class="container demo">
+    <div id="app-02">
+        <h1>{{ message }}</h1>
+        <beer-list></beer-list>
+    </div>
+</div>
+
+<script>
+Vue.component('beer-list', VueBeers.beerList02);
+var app = new Vue({
+    el: '#app-02',
+    data: {
+        message: 'Vue Beers',
+    }
+})
+</script>
+
+<p>But now, if your list changes, if you add or remove elements, the list rendering will change accordingly.</p>
+
+<h2 id="adding-a-beer-list-item-component">Adding a <code class="highlighter-rouge">beer-list-item</code> component</h2>
+
+<p>In order to better structurate our app in a component-based architecture, we could create a <code class="highlighter-rouge">beer-list-item</code> component to make the rendering of each beer.</p>
+
+<p>As we did with <code class="highlighter-rouge">beer-list</code>, let’s create the component:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (!window.VueBeers) {
+    window.VueBeers = {};
+}
+
+window.VueBeers.beerListItem = {
+    data: function() {
+        return {   
+        };
+    },
+    template: `
+    `,
+};
+</code></pre></div></div>
+
+<p>Now we need to define the <code class="highlighter-rouge">props</code> of the component, its properties, what it will need to receive as information from the outside in order to work and render. In our current case, looking at our beers data model, we have two properties for each beer, <code class="highlighter-rouge">name</code> and <code class="highlighter-rouge">description</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>window.VueBeers.beerListItem = {
+    props: [ 'name', 'description' ],
+}
+</code></pre></div></div>
+
+<blockquote>
+  <h4 id="data-vs-props"><code class="highlighter-rouge">data</code> vs <code class="highlighter-rouge">props</code></h4>
+  <p><code class="highlighter-rouge">data</code> and <code class="highlighter-rouge">props</code> can seem very similar seem at first sigh, but they are different concepts. Together <code class="highlighter-rouge">data</code> and <code class="highlighter-rouge">props</code> define the <em>state</em> of the component, the <code class="highlighter-rouge">data</code> it’s in internal state, the <code class="highlighter-rouge">props</code> are the properties defined by the parent object.</p>
+</blockquote>
+
+<p>After the <code class="highlighter-rouge">props</code> we can define the template, i.e. how to render the component:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>window.VueBeers.beerListItem = {
+    template:  `
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"beer"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;p&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    `,
+}
+</code></pre></div></div>
+
+<p>So our component is ready, and we can use it from <code class="highlighter-rouge">beer-list</code>.
+You begin by loading the component in the header of your application:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'./components/beer-list-item.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Then you load the component before creating the Vue instance, as previously:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;script&gt;</span>
+    <span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'beer-list'</span><span class="p">,</span> <span class="nx">VueBeers</span><span class="p">.</span><span class="nx">beerList</span><span class="p">);</span>
+    <span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'beer-list-item'</span><span class="p">,</span> <span class="nx">VueBeers</span><span class="p">.</span><span class="nx">beerListItem</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+        <span class="na">el</span><span class="p">:</span> <span class="s1">'#app'</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">message</span><span class="p">:</span> <span class="s1">'Vue Beers'</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>And now, inside <code class="highlighter-rouge">beer-list</code> you can use the <code class="highlighter-rouge">beer-list-item</code>. 
+In order to pass values to <code class="highlighter-rouge">beer-list-item</code> properties, we can:</p>
+
+<ul>
+  <li>
+    <p>Directly putting a string or number value as an attribute for  <code class="highlighter-rouge">beer-list-item</code>:</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;beer-list-item</span> 
+      <span class="na">name=</span><span class="s">'Chimay Rouge'</span>
+      <span class="na">description=</span><span class="s">'This Trappist beer possesses a beautiful coppery colour...'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/beer-list-item&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Binding its value to a property or data item from the parent component, using <code class="highlighter-rouge">v-bind:</code> (or simple <code class="highlighter-rouge">:</code>):</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;li</span> <span class="na">v-for=</span><span class="s">"beer in beers"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;beer-list-item</span> 
+          <span class="na">v-bind:name=</span><span class="s">'beer.name'</span>
+          <span class="na">v-bind:description=</span><span class="s">'beer.description'</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/beer-list-item&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>We are going to use this last syntax in <code class="highlighter-rouge">beer-list</code>, and then we will have our beer list with a full component approach:</p>
+
+<div class="container demo">
+    <div id="app-03">
+        <h1>{{ message }}</h1>
+        <beer-list></beer-list>
+    </div>
+</div>
+
+<script>
+if (!window.VueBeers) {
+    window.VueBeers = {};
+}
+
+window.VueBeers.beerList03 = {
+    data: function() {
+        return {    
+            beers:[
+                {
+                    alcohol: 8.5,
+                    name: "Affligem Tripel",
+                    description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+                },
+                {
+                    alcohol: 9.2,
+                    name: "Rochefort 8",
+                    description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+                },
+                {
+                    alcohol: 7,
+                    name: "Chimay Rouge",
+                    description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+                }
+            ],        
+        };
+    },
+    template: `
+    <ul>
+        <li v-for="beer in beers">
+            <beer-list-item 
+                v-bind:name='beer.name'
+                v-bind:description='beer.description'>
+            </beer-list-item>
+        </li>
+    </ul>
+    `,
+};   
+window.VueBeers.beerListItem03 = {
+    data: function() {
+        return {   
+        };
+    },
+    props: [ 'name', 'description' ],
+    template: `
+    <div class="beer">
+        <span>{{ name }}</span>
+        <p>{{ description }}.</p>
+    </div>
+    `,
+};
+Vue.component('beer-list', VueBeers.beerList02);
+Vue.component('beer-list-item', VueBeers.beerListItem02);
+var app = new Vue({
+    el: '#app-03',
+    data: {
+        message: 'Vue Beers',
+    }
+});
+</script>
+
+<p>In the <a href="../step-04/">next step</a> we are going to learn to filter the beer list to add full text search to the app.</p>
+
+        <div class='before-solution-next'>
+
+    
+        <div class='before'><a href="/vue-beers/step-02/">Previous</a></div>
+    
+    
+        <div class='solution'><a href="/vue-beers/step-03/solution/" target="_blank">Solution</a></div>
+    
+    
+    
+        <div class='next'><a href="/vue-beers/step-04/">Next</a></div>
+    
+</div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+<footer>
+    <div> <hr> </div>
+
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 center">
+            <h3>
+                <a href="https://medium.com/helloexoworld">
+                    <i class="fab fa-medium-m fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://twitter.com/helloexoworld">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://github.com/helloexoworld">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://groups.google.com/forum/#!forum/helloexoworld">
+                    <i class="fas fa-envelope fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a target="_blank" href="https://twitter.com/home?status=Hey%20%40HelloExoWorld,%20I%20would%20like%20to%20have%20an%20invitation%20to%20join%20Slack!">
+                    <i class="fab fa-slack fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+    <div class="small center">
+        &copy; 2018 - <a href="https://helloexo.world/">Association HelloExoWorld</a></div>
+
+    </div>
+</footer>
+</body>
+</html>
