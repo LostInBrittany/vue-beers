@@ -81,7 +81,7 @@ Now we only need to modify the `v-for` directive to use the new method:
 
 ```html
 <div class="beers">
-    <div class="beer" v-for="beer in filteredAndSorted(beer,filterText)">
+    <div class="beer" v-for="beer in filteredAndSorted(beers,filterText)">
         <beer-list-item 
             v-bind:name='beer.name'
             v-bind:description='beer.description'>

@@ -450,6 +450,20 @@ window.VueBeers.beerListItem06_01 = {
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">props</span><span class="p">:</span> <span class="p">[</span> <span class="s1">'name'</span><span class="p">,</span> <span class="s1">'description'</span><span class="p">,</span> <span class="s1">'alcohol'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">,</span> <span class="s1">'img'</span> <span class="p">],</span>
 </code></pre></div></div>
 
+<p>We cannot use directly the <code class="highlighter-rouge">img</code> property of the beer, because it’s a relative path from <code class="highlighter-rouge">data</code> folder. We need to transform it to a path relative to the root of the application. To do it, we can use a <em>computed property</em>, a property whose value depends on another property or properties.</p>
+
+<p>Let’s add a computed property <code class="highlighter-rouge">imgUrl</code> to the <code class="highlighter-rouge">beer-list-item</code> component:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">imgUrl</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="s2">`../../data/beers</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">img</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</code></pre></div></div>
+
 <p>Then we modify the template:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">v-bind:id=</span><span class="s">"id"</span> <span class="na">class=</span><span class="s">"clearfix"</span><span class="nt">&gt;</span>

@@ -62,6 +62,22 @@ We begin by adding the missing properties to `props`:
 props: [ 'name', 'description', 'alcohol', 'id', 'img' ],
 ```
 
+
+We cannot use directly the `img` property of the beer, because it's a relative path from `data` folder. We need to transform it to a path relative to the root of the application. To do it, we can use a *computed property*, a property whose value depends on another property or properties.
+
+Let's add a computed property `imgUrl` to the `beer-list-item` component:
+
+```javascript
+computed: {
+    imgUrl: function() {
+        if (!this.img) {
+            return;
+        }
+        return `../../data/beers${this.img}`;
+    }
+},
+```
+
 Then we modify the template:
 
 ```html
@@ -72,6 +88,7 @@ Then we modify the template:
     <p class="pull-right el-alcohol">Alcohol content: {{alcohol}}%</p>
 </div>
 ```
+
 
 And add the missing information in `beer-list`:
 

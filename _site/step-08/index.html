@@ -451,9 +451,6 @@ In Vue we can do it with the <code class="highlighter-rouge">v-on</code> directi
 
 <p>And now you have your shiny new app with all the details!</p>
 
-<hr />
-<hr />
-
 <div class="container demo">
     <div id="app-08_01">
         <h1></h1>
@@ -534,8 +531,8 @@ window.VueBeers.beerList08_01 = {
     mounted: function() {
         this.criterium = this.criteria[0].name;
     },
-    
     template: `
+    
     <div class="container">
         <div class="row">
             <div class="sidebar col-md-3">
@@ -579,6 +576,7 @@ window.VueBeers.beerList08_01 = {
             </div>
         </div>
     </div> 
+    
     `,
 };   
 
@@ -603,6 +601,7 @@ window.VueBeers.beerListItem08_01 = {
         }
     },
     template: `
+    
     <div v-bind:id="id" class="clearfix">
         <router-link v-bind:to="detailUrl">
             <img class="float-right el-img" v-bind:src="imgUrl">
@@ -611,6 +610,7 @@ window.VueBeers.beerListItem08_01 = {
             <p class="pull-right el-alcohol">Alcohol content: {{alcohol}}%</p>
         </router-link>
     </div>
+    
     `,
 };
     
@@ -659,6 +659,7 @@ window.VueBeers.beerDetails08_01 = {
         },
     },
     template: `
+    
     <div v-bind:id="beer.id" class="detail clearfix">
         <a href="#/">
             <img class="pull-right back" src="../img/back.png">
@@ -714,6 +715,7 @@ window.VueBeers.beerDetails08_01 = {
         </ul>
         </ul>
     </div>
+    
     `,
 };    
 

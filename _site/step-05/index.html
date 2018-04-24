@@ -291,7 +291,7 @@
 <p>Now we only need to modify the <code class="highlighter-rouge">v-for</code> directive to use the new method:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"beers"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"beer"</span> <span class="na">v-for=</span><span class="s">"beer in filteredAndSorted(beer,filterText)"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"beer"</span> <span class="na">v-for=</span><span class="s">"beer in filteredAndSorted(beers,filterText)"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;beer-list-item</span> 
             <span class="na">v-bind:name=</span><span class="s">'beer.name'</span>
             <span class="na">v-bind:description=</span><span class="s">'beer.description'</span><span class="nt">&gt;</span>
