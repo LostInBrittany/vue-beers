@@ -239,10 +239,10 @@
 
     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"beer-thumbs"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;img</span> <span class="na">v-bind:src=</span><span class="s">"beerImg"</span> <span class="na">on-click=</span><span class="s">"setImage"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">v-bind:src=</span><span class="s">"beerImg"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;img</span> <span class="na">v-bind:src=</span><span class="s">"beerLabel"</span> <span class="na">on-click=</span><span class="s">"setImage"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">v-bind:src=</span><span class="s">"beerLabel"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;/ul&gt;</span>
     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"specs"</span><span class="nt">&gt;</span>
@@ -271,7 +271,7 @@
 you can query the server from the <code class="highlighter-rouge">mounted</code> lifecycle hook:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">mounted</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">getBeerDetils</span><span class="p">(</span><span class="nx">$route</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">getBeerDetails</span><span class="p">(</span><span class="nx">$route</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -283,9 +283,44 @@ you can query the server from the <code class="highlighter-rouge">mounted</code>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">watch</span><span class="p">:</span> <span class="p">{</span>
     <span class="s1">'$route'</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="k">from</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">getBeerDetils</span><span class="p">(</span><span class="nx">to</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="nx">getBeerDetails</span><span class="p">(</span><span class="nx">to</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="gettin-the-beer-details">Gettin the beer details</h2>
+
+<p>To get the details of a beer whose <code class="highlighter-rouge">id</code> is <code class="highlighter-rouge">xxx</code> we need to recover the file <code class="highlighter-rouge">/vue-beers/data/beers/details/xxx.json</code>. In the <code class="highlighter-rouge">getBeerDetails</code> method we are going to use again the Fetch API to recover the data, and initialise the <code class="highlighter-rouge">beer</code> data object with the details:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">getBeerDetails</span><span class="p">:</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">fetchResult</span>
+            <span class="nx">fetchResult</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`../../data/beers/details/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">.json`</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">fetchResult</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">beer</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetchResult</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+</code></pre></div></div>
+
+<h2 id="computed-properties">Computed properties</h2>
+
+<p>In the details we want to display images for both the bottle and the label of the beer. In the JSON data we have a relative path for these images in <code class="highlighter-rouge">beer.img</code> and <code class="highlighter-rouge">beer.label</code>, but we need to adapt them to our application. The simplest way to do it is using two computed properties, <code class="highlighter-rouge">imgUrl</code> and <code class="highlighter-rouge">labelUrl</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nx">computed</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">imgUrl</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">beer</span><span class="p">.</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="s2">`../../data/</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">beer</span><span class="p">.</span><span class="nx">img</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="nx">labelUrl</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">beer</span><span class="p">.</span><span class="nx">label</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="s2">`../../data/</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">beer</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
 </code></pre></div></div>
 
         <div class='before-solution-next'>
