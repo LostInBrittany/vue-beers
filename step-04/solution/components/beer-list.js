@@ -26,12 +26,12 @@ window.VueBeers.beerList = {
         };
     },    
     methods: {
-        filteredList: function (filterText) {
-            if (!this.filterText) {
-                return this.beers;
+        filteredList: function (beers, filterText) {
+            if (!filterText) {
+                return [ ... beers];
             }
-            return this.beers.filter( (beer) => {
-                return beer.name.match(new RegExp(this.filterText, 'i'));
+            return beers.filter( (beer) => {
+                return beer.name.match(new RegExp(filterText, 'i'));
             })
         }
     },
@@ -50,7 +50,8 @@ window.VueBeers.beerList = {
             </div>
             <div class="col-md-9">
                 <div class="beers">
-                    <div class="beer" v-for="beer in filteredList(beers)">
+                    <div class="beer" 
+                            v-for="beer in filteredList(beers,filterText)">
                         <beer-list-item 
                             v-bind:name='beer.name'
                             v-bind:description='beer.description'>

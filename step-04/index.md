@@ -195,12 +195,12 @@ So we add a `filteredText` object to our `beer-list` component options:
 
 ```javascript
 methods: {
-    filteredList: function (filterText) {
-        if (!this.filteredText) {
-            return this.beers;
+    filteredList: function (beers,filterText) {
+        if (!filterText) {
+            return  [ ... beers];;
         }
-        return this.beers.filter( (beer) => {
-            return beer.name.match(new RegExp(this.filterText, 'i'));
+        return beers.filter( (beer) => {
+            return beer.name.match(new RegExp(filterText, 'i'));
         })
     }
 },
@@ -209,7 +209,7 @@ methods: {
 And in the `v-for` directive, we iterate on the filtered list:
 
 ```html
-<div class="beer" v-for="beer in filteredList(beers)">
+<div class="beer" v-for="beer in filteredList(beers, filterText)">
     <beer-list-item 
         v-bind:name='beer.name'
         v-bind:description='beer.description'>
@@ -258,13 +258,12 @@ window.VueBeers.beerList04_02 = {
         };
     },  
     methods: {
-        filteredList: function (filterText) {
-            if (!this.filterText) {
-                return this.beers;
+        filteredList: function (beers, filterText) {
+            if (!filterText) {
+                return [ ... beers];
             }
-            return this.beers.filter( (beer) => {
-            console.log('Filtering', this.filterText, beer.name, beer.name.match(new RegExp(this.filterText, 'i')));
-                return beer.name.match(new RegExp(this.filterText, 'i'));
+            return beers.filter( (beer) => {
+                return beer.name.match(new RegExp(filterText, 'i'));
             })
         }
     },
@@ -283,7 +282,8 @@ window.VueBeers.beerList04_02 = {
             </div>
             <div class="col-md-9">
                 <div class="beers">
-                    <div class="beer" v-for="beer in filteredList(beers)">
+                    <div class="beer" 
+                            v-for="beer in filteredList(beers,filterText)">
                         <beer-list-item 
                             v-bind:name='beer.name'
                             v-bind:description='beer.description'>
