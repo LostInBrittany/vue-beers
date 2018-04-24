@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title> Vue Beers - VueJS tutorial - Calling the server </title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  
+    <style>
+      body {
+        background-color: #eeeeee;
+      }
+    </style>
+
+    <link rel="stylesheet" 
+        href="/vue-beers/assets/bootstrap/bootstrap.min.css">
+
+    <script src="/vue-beers/assets/jquery/jquery.js"></script>
+    <script src="/vue-beers/assets/bootstrap/bootstrap.js"></script>
+
+    <script src='/vue-beers/node_modules/vue/dist/vue.js'></script>
+
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers.css">
+    <link rel="stylesheet" href="/vue-beers/css/vue-beers-navbar.css">
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/vue-beers/css/syntax.css">
+  
+
+    <script defer 
+        src="/vue-beers/assets/font-awesome/releases/v5.0.6/js/all.js"></script>
+
+    <style>
+      :host {
+        display: block;
+      }
+      .top-10 { margin-top:10px; }
+      h4 {
+        font-weight: bold;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  
+<body>
+  <warp10-embeddable-quantum-conf 
+    backend='{"id":"helloexoworld","label":"HelloExo.World","url":""}' 
+    debug></warp10-embeddable-quantum-conf>
+  
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <!--
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      -->
+        <button type="button" 
+            class="navbar-toggle toggle collapsed" 
+            data-toggle="collapse" data-target="#sidebar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/vue-beers/">
+          <div class="navbar-id">
+            <div class="navbar-id-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 200 200"><circle cx="100" cy="100" r="98.121" fill="#fff"/><path fill="#42b883" d="M32.065 35.392l68.095 117.945 68.095-117.945h-52.368L100.16 62.627 84.433 35.392z"/><path fill="#35495e" d="M59.3 35.392l40.86 70.766 40.86-70.766h-25.133L100.16 62.627 84.433 35.392z"/><path d="M134.029 167.673c-2.754-1.292-2.653-18.566-2.653-45.001 0-20.536.091-24.219.654-26.311.703-2.621 1.691-4.36 3.476-6.12 2.49-2.455 2.55-2.684 2.663-10.29.106-7.092.713-11.485 2.158-15.608 1.033-2.952 1.1-3.803.385-4.868-.827-1.23-.844-2.89-.042-4.073.893-1.316.776-1.88-.617-2.976-1.916-1.507-1.397-2.914 1.294-3.507 1.85-.408 11.733-.388 13.68.027 2.614.559 3.073 1.96 1.14 3.48-1.466 1.154-1.497 1.383-.403 3.031.9 1.355.83 2.338-.296 4.247-.59 1-.573 1.291.225 3.814 1.776 5.613 2.23 8.614 2.362 15.601.07 3.758.238 7.284.372 7.836.134.552 1.173 1.982 2.31 3.178 1.136 1.195 2.478 3.103 2.983 4.239.914 2.056.919 2.179 1.034 27.078.127 27.624.215 44.921-2.467 46.178-1.294.607-2.056.642-14.177.642-11.805 0-12.908-.047-14.081-.597z" fill="#35495e" stroke="#35495e" stroke-width="3.815" /></svg>
+            </div>
+            <div class="navbar-id-name">
+              Vue Beers - A Vue.js tutorial
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-separator" > </div>
+
+  <warp10-conf conf="doc"></warp10-conf>
+
+  <div id="mainbody">
+
+  <div class="container top-10" id="main-container">
+    <div class="row">
+      
+    <div id="sidebar" class="col-sm-3 collapse">
+      
+        <div class="panel-group" id="side-menu">
+      
+            <div id="panel-steps" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-steps">
+                    Steps
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-steps" class="panel-collapse collapse  in ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/">
+                    Filtering
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/">
+                    Sorting
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-06/">
+                    Calling the server
+                </a>
+            </div>
+        
+        </div>
+    </div>
+        
+            <div id="panel-solutions" class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#side-menu" href="#collapse-solutions">
+                Solutions
+            </a>
+            </h4>
+        </div>
+        <div id="collapse-solutions" class="panel-collapse collapse ">
+            <div class="list-group">
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-01/solution/"
+                    target="_blank">
+                    Let's begin with some static HTML
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-02/solution/"
+                    target="_blank">
+                    Creating your first Vue.js app
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-03/solution/"
+                    target="_blank">
+                    Iterating the list
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-04/solution/"
+                    target="_blank">
+                    Filtering
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-05/solution/"
+                    target="_blank">
+                    Sorting
+                </a>
+        
+                <a class="list-group-item" 
+                    href="/vue-beers/step-06/solution"
+                    target="_blank">
+                    Calling the server
+                </a>
+                
+            </div>
+        
+        </div>
+    </div>
+        
+      
+      
+        </div>
+      
+     </div>
+      
+      <div class="col-sm-9">
+        <h1>Calling the server</h1>
+        <p>Enough of building an app with five beers in a hard-coded dataset! Let’s fetch a larger dataset from our server using one the power of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a>.</p>
+
+<h2 id="data">Data</h2>
+
+<p>Our new dataset is now a list of 11 beers stored in JSON format in the <code class="highlighter-rouge">data/beers/beers.json</code>, available to your browser at the URL <code class="highlighter-rouge">http://127.0.0.1:8000/data/beers/beers.json</code> or simply <a href="/vue-beers/data/beers/beers.json" target="_blank">here</a>.</p>
+
+<p><code class="highlighter-rouge">app/beers/beers.json</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+  <span class="p">...</span>
+  <span class="p">{</span>
+    <span class="s2">"alcohol"</span><span class="p">:</span> <span class="mf">6.8</span><span class="p">,</span>
+    <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"A reddish-brown abbey ale brewed with dark malts. The secondary fermentation gives a fruity aroma and a unique spicy character with a distinctive aftertaste. Secondary fermentation in the bottle."</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"AffligemDubbel"</span><span class="p">,</span>
+    <span class="s2">"img"</span><span class="p">:</span> <span class="s2">"beers/img/AffligemDubbel.jpg"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Affligem Dubbel"</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<h2 id="the-fetch-api">The Fetch API</h2>
+
+<p>We will use the  Fetch API to make an HTTP request to your web server to fetch the data in the <code class="highlighter-rouge">app/beers/beers.json</code> file. The Fetch API is an interface for fetching resources (including across the network). It will seem familiar to anyone who has used XMLHttpRequest, but the new API provides a more powerful and flexible feature set.</p>
+
+<p>We want to load the list of beers at the loading of <code class="highlighter-rouge">beer-list</code> component. We can use the <code class="highlighter-rouge">created</code> lifecycle hook to do the fetch. As the fetch operation is asynchrone, we use the <code class="highlighter-rouge">async / await</code> syntax on the <code class="highlighter-rouge">created</code> hook:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">created</span><span class="p">:</span> <span class="k">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">fetchResult</span>
+    <span class="nx">fetchResult</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">'../../data/beers/beers.json'</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">fetchResult</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">beers</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetchResult</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</code></pre></div></div>
+
+<p>And now we get the full list of beers:</p>
+
+<hr />
+<hr />
+
+<div class="container demo">
+    <div id="app-06_01">
+        <h1>{{ message }}</h1>
+        <beer-list-06-01></beer-list-06-01>
+    </div>
+</div>
+
+<script>
+if (!window.VueBeers) {
+    window.VueBeers = {};
+}
+
+window.VueBeers.beerList06_01 = {
+
+    data: function() {
+        return { 
+            criteria: [
+                { name: "name", label: "Alphabetical"},
+                { name: "alcohol", label: "Alcohol content" }
+            ],
+            criterium: '',
+            descendingSort: false,
+            filterText: '',   
+            beers:[
+                {
+                    "alcohol": 6.8,
+                    "name": "Affligem Blond",
+                    "description": "Affligem Blonde, the classic clear blonde abbey ale, with a gentle roundness and 6.8% alcohol. Low on bitterness, it is eminently drinkable."
+                },
+                {
+                    "alcohol": 8.5,
+                    "name": "Affligem Tripel",
+                    "description": "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+                },
+                {
+                    "alcohol": 9.2,
+                    "name": "Rochefort 8",
+                    "description": "A dry but rich flavoured beer with complex fruity and spicy flavours."
+                },
+                {
+                    "alcohol": 11.3,
+                    "name": "Rochefort 10",
+                    "description": "The top product from the Rochefort Trappist brewery. Dark colour, full and very impressive taste. Strong plum, raisin, and black currant palate, with ascending notes of vinousness and other complexities."
+                },
+                {
+                    "alcohol": 7,
+                    "name": "Chimay Rouge",
+                    "description": "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+                }
+            ],        
+        };
+    },    
+    methods: {
+        filteredAndSorted: function(beers, filterText, criterium, descendingSort)  {
+            let coef = descendingSort ? -1 : 1;
+            return this.filteredList(beers, filterText)
+                .sort( (a,b) =>  {  
+                    if ( a[this.criterium] === b[this.criterium] ) return 0;
+                    if ( a[this.criterium] < b[this.criterium] ) return -1 * coef;
+                    if ( a[this.criterium] > b[this.criterium] ) return 1 * coef;      
+                    });
+        },
+        filteredList: function (beers, filterText) {
+            if (!filterText) {
+                return [ ... beers];
+            }
+            return beers.filter( (beer) => {
+                return beer.name.match(new RegExp(filterText, 'i'));
+            })
+        }
+    },
+    mounted: function() {
+        this.criterium = this.criteria[0].name;
+    },
+    created: async function() {
+        let fetchResult
+        fetchResult = await fetch('../data/beers/beers.json');
+        if (fetchResult.status == 200) {
+            this.beers = await fetchResult.json();
+        }
+    },
+    template: `
+    <div class="container">
+        <div class="row">
+            <div class="sidebar col-md-3">
+                <div>Search:</div> 
+                <div>
+                    <input id="searchInput" 
+                        class="searchInput" 
+                        v-model="filterText">
+                </div>
+                <div>  
+                Sort by: 
+                <select v-model="criterium">
+                    <option 
+                            v-for="item in criteria"  
+                            v-bind:value="item.name">
+                        {{item.label}}
+                    </option>
+                </select>
+                <div>
+                    <input 
+                        type="checkbox" 
+                        v-model="descendingSort" 
+                        name="sortingOrder"> 
+                    Descending sort
+                </div>
+            </div>
+            </div>
+            <div class="col-md-9">
+                <div class="beers">
+                    <div class="beer" 
+                            v-for="beer in filteredAndSorted(beers,filterText,criterium,descendingSort)">
+                        <beer-list-item-06-01 
+                            v-bind:name='beer.name'
+                            v-bind:alcohol='beer.alcohol'
+                            v-bind:description='beer.description'>
+                        </beer-list-item-06-01>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    `,
+};   
+
+window.VueBeers.beerListItem06_01 = {
+    data: function() {
+        return {   
+        };
+    },
+    props: [ 'name', 'description', 'alcohol' ],
+    template: `
+    <div class="beer">
+        <div class="alcohol">{{ alcohol }}°</div>
+        <div class="name">{{ name }}</div>
+        <div class="description">{{ description }}</div>
+    </div>
+    `,
+};
+    
+
+    Vue.component('beer-list-06-01', VueBeers.beerList06_01);
+    Vue.component('beer-list-item-06-01', VueBeers.beerListItem06_01);
+    var app = new Vue({
+        el: '#app-06_01',
+        data: {
+            message: 'Vue Beers',
+        }
+    })
+</script>
+
+<style>
+    .searchInput {
+        max-width: 100%;
+        width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+    .beer .alcohol {
+        float: right;
+    }
+    .beer .name {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .beer .description {
+        margin-bottom: 2rem;
+    }
+    .container {
+        max-width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+</style>
+
+<h2 id="showing-more-information">Showing more information</h2>
+
+<p>As now we recover more information for each beer (an id and an image URL), we are going to modify <code class="highlighter-rouge">beer-list-item</code> element to show it.</p>
+
+<p>We begin by adding the missing properties to <code class="highlighter-rouge">props</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">props</span><span class="p">:</span> <span class="p">[</span> <span class="s1">'name'</span><span class="p">,</span> <span class="s1">'description'</span><span class="p">,</span> <span class="s1">'alcohol'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">,</span> <span class="s1">'img'</span> <span class="p">],</span>
+</code></pre></div></div>
+
+<p>Then we modify the template:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">v-bind:id=</span><span class="s">"id"</span> <span class="na">class=</span><span class="s">"clearfix"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"float-right el-img"</span> <span class="na">v-bind:src=</span><span class="s">"imgUrl"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"el-name"</span><span class="nt">&gt;&lt;/h2&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"el-description"</span><span class="nt">&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"pull-right el-alcohol"</span><span class="nt">&gt;</span>Alcohol content: %<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>And add the missing information in <code class="highlighter-rouge">beer-list</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"beers"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"beer"</span> 
+            <span class="na">v-for=</span><span class="s">"beer in filteredAndSorted(beers,filterText,criterium,descendingSort)"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;beer-list-item</span> 
+            <span class="na">v-bind:id=</span><span class="s">'beer.id'</span>
+            <span class="na">v-bind:img=</span><span class="s">'beer.img'</span>
+            <span class="na">v-bind:name=</span><span class="s">'beer.name'</span>
+            <span class="na">v-bind:alcohol=</span><span class="s">'beer.alcohol'</span>
+            <span class="na">v-bind:description=</span><span class="s">'beer.description'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/beer-list-item&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Now we can add some CSS styles to make it look well, and see the result:</p>
+
+<hr />
+<hr />
+
+<div class="container demo">
+    <div id="app-06_02">
+        <h1></h1>
+        <beer-list-06-02></beer-list-06-02>
+    </div>
+</div>
+
+<script>
+if (!window.VueBeers) {
+    window.VueBeers = {};
+}
+
+window.VueBeers.beerList06_02 = {
+
+    data: function() {
+        return { 
+            criteria: [
+                { name: "name", label: "Alphabetical"},
+                { name: "alcohol", label: "Alcohol content" }
+            ],
+            criterium: '',
+            descendingSort: false,
+            filterText: '',   
+            beers:[
+                {
+                    "alcohol": 6.8,
+                    "name": "Affligem Blond",
+                    "description": "Affligem Blonde, the classic clear blonde abbey ale, with a gentle roundness and 6.8% alcohol. Low on bitterness, it is eminently drinkable."
+                },
+                {
+                    "alcohol": 8.5,
+                    "name": "Affligem Tripel",
+                    "description": "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+                },
+                {
+                    "alcohol": 9.2,
+                    "name": "Rochefort 8",
+                    "description": "A dry but rich flavoured beer with complex fruity and spicy flavours."
+                },
+                {
+                    "alcohol": 11.3,
+                    "name": "Rochefort 10",
+                    "description": "The top product from the Rochefort Trappist brewery. Dark colour, full and very impressive taste. Strong plum, raisin, and black currant palate, with ascending notes of vinousness and other complexities."
+                },
+                {
+                    "alcohol": 7,
+                    "name": "Chimay Rouge",
+                    "description": "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+                }
+            ],        
+        };
+    },    
+    methods: {
+        filteredAndSorted: function(beers, filterText, criterium, descendingSort)  {
+            let coef = descendingSort ? -1 : 1;
+            return this.filteredList(beers, filterText)
+                .sort( (a,b) =>  {  
+                    if ( a[this.criterium] === b[this.criterium] ) return 0;
+                    if ( a[this.criterium] < b[this.criterium] ) return -1 * coef;
+                    if ( a[this.criterium] > b[this.criterium] ) return 1 * coef;      
+                    });
+        },
+        filteredList: function (beers, filterText) {
+            if (!filterText) {
+                return [ ... beers];
+            }
+            return beers.filter( (beer) => {
+                return beer.name.match(new RegExp(filterText, 'i'));
+            })
+        }
+    },
+    created: async function() {
+        let fetchResult
+        fetchResult = await fetch('/vue-beers/data/beers/beers.json');
+        if (fetchResult.status == 200) {
+            this.beers = await fetchResult.json();
+        }
+    },
+    mounted: function() {
+        this.criterium = this.criteria[0].name;
+    },
+    
+    template: `
+    
+    <div class="container">
+        <div class="row">
+            <div class="sidebar col-md-3">
+                <div>Search:</div> 
+                <div>
+                    <input id="searchInput" 
+                        class="searchInput" 
+                        v-model="filterText">
+                </div>
+                <div>  
+                Sort by: 
+                <select v-model="criterium">
+                    <option 
+                            v-for="item in criteria"  
+                            v-bind:value="item.name">
+                        {{item.label}}
+                    </option>
+                </select>
+                <div>
+                    <input 
+                        type="checkbox" 
+                        v-model="descendingSort" 
+                        name="sortingOrder"> 
+                    Descending sort
+                </div>
+            </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="beers">
+                    <div class="beer-06-02" 
+                            v-for="beer in filteredAndSorted(beers,filterText,criterium,descendingSort)">
+                        <beer-list-item-06-02 
+                            v-bind:beerId='beer.id'
+                            v-bind:img='beer.img'
+                            v-bind:name='beer.name'
+                            v-bind:alcohol='beer.alcohol'
+                            v-bind:description='beer.description'>
+                        </beer-list-item-06-02>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    `,
+};   
+
+window.VueBeers.beerListItem06_02 = {  
+    data: function() {
+        return {   
+        };
+    },
+    props: [ 'name', 'description', 'alcohol', 'beerId', 'img' ],
+    computed: {
+        imgUrl: function() {
+            if (!this.img) {
+                return;
+            }
+            return `../data/beers${this.img}`;
+        }
+    },
+    template: `
+    <div v-bind:beer-id="beerId" class="clearfix">
+      <img class="float-right el-img" v-bind:src="imgUrl">
+      <h2 class="el-name">{{name}}</h2>
+      <p class="el-description">{{description}}</p>
+      <p class="pull-right el-alcohol">Alcohol content: {{alcohol}}%</p>
+    </div>
+    `,
+};
+    
+
+    Vue.component('beer-list-06-02', VueBeers.beerList06_02);
+    Vue.component('beer-list-item-06-02', VueBeers.beerListItem06_02);
+    var app = new Vue({
+        el: '#app-06_02',
+        data: {
+            message: 'Vue Beers',
+        },
+    })
+</script>
+
+<style>
+    .searchInput {
+        max-width: 100%;
+        width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+    .beer .alcohol {
+        float: right;
+    }
+    .beer .name {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .beer .description {
+        margin-bottom: 2rem;
+    }
+    .container {
+        max-width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+    .beer-06-02 {
+        margin: 10px;
+        padding: 10px;
+        border: solid 1px black;
+        border-radius: 10px;
+        min-height: 150px;
+    }
+    .el-img {
+        max-height: 100px;
+    }
+    .el-alcohol {
+        clear:both;
+    }
+    .float-right {
+        float:right;
+    }
+</style>
+
+<p>Now that you have loaded beer data from a server-side JSON file, go to <a href="../step-07/">step 7</a> to learn how to add the details of each beer.</p>
+
+        <div class='before-solution-next'>
+
+    
+        <div class='before'><a href="/vue-beers/step-05/">Previous</a></div>
+    
+    
+        <div class='solution'><a href="/vue-beers/step-06/solution/" target="_blank">Solution</a></div>
+    
+    
+    
+        <div class='next'><a href="/vue-beers/step-07/">Next</a></div>
+    
+</div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+<footer>
+    <div> <hr> </div>
+
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 center">
+            <h3>
+                <a href="https://medium.com/helloexoworld">
+                    <i class="fab fa-medium-m fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://twitter.com/helloexoworld">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://github.com/helloexoworld">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a href="https://groups.google.com/forum/#!forum/helloexoworld">
+                    <i class="fas fa-envelope fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 center">
+            <h3>
+                <a target="_blank" href="https://twitter.com/home?status=Hey%20%40HelloExoWorld,%20I%20would%20like%20to%20have%20an%20invitation%20to%20join%20Slack!">
+                    <i class="fab fa-slack fa-2x"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+    <div class="small center">
+        &copy; 2018 - <a href="https://helloexo.world/">Association HelloExoWorld</a></div>
+
+    </div>
+</footer>
+</body>
+</html>
