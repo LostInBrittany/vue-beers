@@ -19,7 +19,6 @@ template: `
 <div v-bind:id="beer.id" class="detail clearfix">
     <a href="#/beers"><img class="pull-right back" src="./img/back.png"></a>
     <h1 class="name">{{beer.name}}</h1>
-    <img class="pull-right img" v-bind:src="mainImg">
     <p class="description">{{beer.description}}</p>
 
     <ul class="beer-thumbs">
@@ -113,4 +112,65 @@ In the details we want to display images for both the bottle and the label of th
             return `../../data/${this.beer.label}`;
         },
     },
+```
+
+## Displaying the big picture
+
+The two former images are thumbnails, and we would like to show a big version of them when they are clicked. Let's begin by adding a big picture to our template:
+
+
+```html
+<h1 class="name">{{beer.name}}</h1>
+
+<img class="pull-right img" v-bind:src="mainImg">
+
+<p class="description">{{beer.description}}</p>
+```
+
+We declare `mainImg` as a `data` member, with an empty string as initial value. We want the image to show the bottle image by default, so we set `mainImg` jut after recovering the beer details:
+
+```javascript
+    data: function() {
+        return {  
+            beer: {}, 
+            mainImg: null,
+        };
+    },
+    [...]
+    methods: {
+        getBeerDetails: async function(id) {
+            let fetchResult
+            fetchResult = await fetch(`../../data/beers/details/${id}.json`);
+            if (fetchResult.status == 200) {
+                this.beer = await fetchResult.json();
+            }
+            this.mainImg = `../../data/${this.beer.img}`;
+        },
+    },
+```
+
+Then we need to listen for the `click` event on the two thumbnail images. 
+In Vue we can do it with the `v-on` directive:
+
+```html
+<ul class="beer-thumbs">
+    <li>
+        <img v-bind:src="imgUrl" 
+            v-on:click="setImage(beer.img)">
+    </li>
+    <li>
+        <img 
+            v-bind:src="labelUrl" 
+            v-on:click="setImage(beer.label)">
+    </li>
+</ul>
+```
+
+```javascript
+    methods: {
+        setImage: function(img) { 
+            this.mainImg = `../../data/${img}`;
+        },
+    },
+
 ```

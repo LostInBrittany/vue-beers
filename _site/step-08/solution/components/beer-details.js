@@ -41,8 +41,8 @@ window.VueBeers.beerDetails = {
             }
             this.mainImg = `../../data/${this.beer.img}`;
         },
-        setImage: function(evt) {
-            this.mainImg = `../../data/${evt.srcElement.dataset.beer}`;
+        setImage: function(img) { 
+            this.mainImg = `../../data/${img}`;
         },
     },
     template: `
@@ -59,14 +59,12 @@ window.VueBeers.beerDetails = {
         <ul class="beer-thumbs">
             <li>
                 <img v-bind:src="imgUrl" 
-                    v-on:click="setImage"
-                    v-bind:data-beer="beer.img">
+                    v-on:click="setImage(beer.img)">
             </li>
             <li>
                 <img 
                     v-bind:src="labelUrl" 
-                    v-on:click="setImage"
-                    v-bind:data-beer="beer.label">
+                    v-on:click="setImage(beer.label)">
             </li>
         </ul>
         <ul class="specs">

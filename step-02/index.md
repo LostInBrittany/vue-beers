@@ -183,26 +183,29 @@ When a Vue instance is created, it adds all the properties found in its `data` o
 In our case, the *data* for this step will have a JavaScript version of the current beer list:
 
 ```javascript
-let data = {
-    message: 'Vue Beers',
-    beers:[
-        {
-            alcohol: 8.5,
-            name: "Affligem Tripel",
-            description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
-        },
-        {
-            alcohol: 9.2,
-            name: "Rochefort 8",
-            description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
-        },
-        {
-            alcohol: 7,
-            name: "Chimay Rouge",
-            description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
-        }
-    ],
-}
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Vue Beers',
+        beers:[
+            {
+                alcohol: 8.5,
+                name: "Affligem Tripel",
+                description: "The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."
+            },
+            {
+                alcohol: 9.2,
+                name: "Rochefort 8",
+                description: "A dry but rich flavoured beer with complex fruity and spicy flavours."
+            },
+            {
+                alcohol: 7,
+                name: "Chimay Rouge",
+                description: "This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "
+            }
+        ],        
+    }
+});
 ```
 Let's say, for example, that we want to display the fist beer in the beer list. We can modify the HTML to show it:
 

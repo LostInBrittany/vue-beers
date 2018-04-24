@@ -382,26 +382,29 @@ var app = new Vue({
 
 <p>In our case, the <em>data</em> for this step will have a JavaScript version of the current beer list:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">message</span><span class="p">:</span> <span class="s1">'Vue Beers'</span><span class="p">,</span>
-    <span class="na">beers</span><span class="p">:[</span>
-        <span class="p">{</span>
-            <span class="na">alcohol</span><span class="p">:</span> <span class="mf">8.5</span><span class="p">,</span>
-            <span class="na">name</span><span class="p">:</span> <span class="s2">"Affligem Tripel"</span><span class="p">,</span>
-            <span class="na">description</span><span class="p">:</span> <span class="s2">"The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="na">alcohol</span><span class="p">:</span> <span class="mf">9.2</span><span class="p">,</span>
-            <span class="na">name</span><span class="p">:</span> <span class="s2">"Rochefort 8"</span><span class="p">,</span>
-            <span class="na">description</span><span class="p">:</span> <span class="s2">"A dry but rich flavoured beer with complex fruity and spicy flavours."</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="na">alcohol</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-            <span class="na">name</span><span class="p">:</span> <span class="s2">"Chimay Rouge"</span><span class="p">,</span>
-            <span class="na">description</span><span class="p">:</span> <span class="s2">"This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-<span class="p">}</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="s1">'#app'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">message</span><span class="p">:</span> <span class="s1">'Vue Beers'</span><span class="p">,</span>
+        <span class="na">beers</span><span class="p">:[</span>
+            <span class="p">{</span>
+                <span class="na">alcohol</span><span class="p">:</span> <span class="mf">8.5</span><span class="p">,</span>
+                <span class="na">name</span><span class="p">:</span> <span class="s2">"Affligem Tripel"</span><span class="p">,</span>
+                <span class="na">description</span><span class="p">:</span> <span class="s2">"The king of the abbey beers. It is amber-gold and pours with a deep head and original aroma, delivering a complex, full bodied flavour. Pure enjoyment! Secondary fermentation in the bottle."</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">alcohol</span><span class="p">:</span> <span class="mf">9.2</span><span class="p">,</span>
+                <span class="na">name</span><span class="p">:</span> <span class="s2">"Rochefort 8"</span><span class="p">,</span>
+                <span class="na">description</span><span class="p">:</span> <span class="s2">"A dry but rich flavoured beer with complex fruity and spicy flavours."</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">alcohol</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+                <span class="na">name</span><span class="p">:</span> <span class="s2">"Chimay Rouge"</span><span class="p">,</span>
+                <span class="na">description</span><span class="p">:</span> <span class="s2">"This Trappist beer possesses a beautiful coppery colour that makes it particularly attractive. Topped with a creamy head, it gives off a slight fruity apricot smell from the fermentation. The aroma felt in the mouth is a balance confirming the fruit nuances revealed to the sense of smell. This traditional Belgian beer is best savoured at cellar temperature "</span>
+            <span class="p">}</span>
+        <span class="p">],</span>        
+    <span class="p">}</span>
+<span class="p">});</span>
 </code></pre></div></div>
 <p>Let’s say, for example, that we want to display the fist beer in the beer list. We can modify the HTML to show it:</p>
 
