@@ -1,8 +1,18 @@
+{% raw %}
+<div class="container demo">
+    <div id='app-05_03'>
+        <h1>{{ message }}</h1>
+        <beer-list></beer-list>
+    </div>
+</div>
+
+<script>
 if (!window.VueBeers) {
     window.VueBeers = {};
 }
 
-window.VueBeers.beerList = {
+window.VueBeers.beerList05_03 = {
+
     data: function() {
         return { 
             criteria: [
@@ -108,3 +118,56 @@ window.VueBeers.beerList = {
     `,
 };   
 
+window.VueBeers.beerListItem05_03 = {
+    data: function() {
+        return {   
+        };
+    },
+    props: [ 'name', 'description', 'alcohol' ],
+    template: `
+    <div class="beer">
+        <div class="alcohol">{{ alcohol }}°</div>
+        <div class="name">{{ name }}</div>
+        <div class="description">{{ description }}</div>
+    </div>
+    `,
+};
+    
+
+    Vue.component('beer-list', VueBeers.beerList05_03);
+    Vue.component('beer-list-item', VueBeers.beerListItem05_03);
+    var app = new Vue({
+        el: '#app-05_03',
+        data: {
+            message: 'Vue Beers',
+        }
+    })
+</script>
+
+
+<style>
+    .searchInput {
+        max-width: 100%;
+        width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+    .beer .alcohol {
+        float: right;
+    }
+    .beer .name {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .beer .description {
+        margin-bottom: 2rem;
+    }
+    .container {
+        max-width: 100%;
+    }
+    .sidebar {
+        margin-bottom: 2rem;
+    }
+</style>
+{% endraw %}

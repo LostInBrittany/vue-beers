@@ -203,3 +203,77 @@ And the calling in the template:
 And now we have the application with filtering and multi-criteria sorting:
 
 {% include step-05/step-05_02.html %}
+
+
+## Ascending or descending
+
+By default our sorter sorts in ascending order. Let's add a checkbox to give us descending sort capabilities.
+
+```html
+{% raw %}
+Sort by: 
+<select v-model="criterium">
+    <option 
+            v-for="item in criteria"  
+            v-bind:value="item.name">
+        {{item.label}}
+    </option>
+</select>
+<div>
+    <input 
+        type="checkbox" 
+        v-model="descendingSort" 
+        name="sortingOrder"> 
+    Descending sort
+</div>
+{% endraw %}
+```                
+
+And add `descendingSort` to the `data` object:
+
+```
+data: function() {
+    return { 
+        criteria: [
+            { name: "name", label: "Alphabetical"},
+            { name: "alcohol", label: "Alcohol content" }
+        ],
+        criterium: '',
+        descendingSort: false,
+        filterText: '',   
+        [...]
+    };
+},
+```
+
+Now we can add `descendingSort` to the parameter list of the `filteredAndSorted` method:
+
+```
+filteredAndSorted: function(beers, filterText, criterium, descendingSort)  {
+    let coef = descendingSort ? -1 : 1;
+    return this.filteredList(beers, filterText)
+        .sort( (a,b) =>  {  
+            if ( a[this.criterium] === b[this.criterium] ) return 0;
+            if ( a[this.criterium] < b[this.criterium] ) return -1 * coef;
+            if ( a[this.criterium] > b[this.criterium] ) return 1 * coef;      
+            });
+},
+```
+
+```html
+<div class="beer" 
+        v-for="beer in filteredAndSorted(beers,filterText,criterium,descendingSort)">
+    <beer-list-item 
+        v-bind:name='beer.name'
+        v-bind:alcohol='beer.alcohol'
+        v-bind:description='beer.description'>
+    </beer-list-item>
+</div>
+```       
+
+And we have the sorting working as intended:
+
+
+{% include step-05/step-05_03.html %}
+
+Now that you have added list sorting, go to [step 6](../step-06/) to learn how to dynamically load our beer data from a server-side JSON file.             

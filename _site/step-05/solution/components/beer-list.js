@@ -10,6 +10,7 @@ window.VueBeers.beerList = {
                 { name: "alcohol", label: "Alcohol content" }
             ],
             criterium: '',
+            descendingSort: false,
             filterText: '',   
             beers:[
                 {
@@ -41,13 +42,14 @@ window.VueBeers.beerList = {
         };
     },    
     methods: {
-        filteredAndSorted: function(beers, filterText, criterium)  {
+        filteredAndSorted: function(beers, filterText, criterium, descendingSort)  {
+            let coef = descendingSort ? -1 : 1;
             return this.filteredList(beers, filterText)
                 .sort( (a,b) =>  {  
                     if ( a[this.criterium] === b[this.criterium] ) return 0;
-                    if ( a[this.criterium] < b[this.criterium] ) return -1;
-                    if ( a[this.criterium] > b[this.criterium] ) return 1;      
-                  });
+                    if ( a[this.criterium] < b[this.criterium] ) return -1 * coef;
+                    if ( a[this.criterium] > b[this.criterium] ) return 1 * coef;      
+                    });
         },
         filteredList: function (beers, filterText) {
             if (!filterText) {
@@ -80,12 +82,19 @@ window.VueBeers.beerList = {
                         {{item.label}}
                     </option>
                 </select>
+                <div>
+                    <input 
+                        type="checkbox" 
+                        v-model="descendingSort" 
+                        name="sortingOrder"> 
+                    Descending sort
+                </div>
             </div>
             </div>
             <div class="col-md-9">
                 <div class="beers">
                     <div class="beer" 
-                            v-for="beer in filteredAndSorted(beers,filterText,criterium)">
+                            v-for="beer in filteredAndSorted(beers,filterText,criterium,descendingSort)">
                         <beer-list-item 
                             v-bind:name='beer.name'
                             v-bind:alcohol='beer.alcohol'
