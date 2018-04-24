@@ -148,5 +148,5 @@ And we have a working router in our app!
 
 {% include step-07/step-07_01.html %}
 
-
+In [step 8](../step-08/) we will create a component to display the detail of each beer.
     

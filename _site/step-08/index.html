@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title> Vue Beers - VueJS tutorial - Vue Beers - A Vue.js tutorial </title>
+    <title> Vue Beers - VueJS tutorial - Displaying beer details </title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
   
@@ -103,7 +103,7 @@
                 </a>
             </h4>
         </div>
-        <div id="collapse-steps" class="panel-collapse collapse ">
+        <div id="collapse-steps" class="panel-collapse collapse  in ">
             <div class="list-group">
         
                 <a class="list-group-item" 
@@ -210,91 +210,80 @@
      </div>
       
       <div class="col-sm-9">
-        <h1>Vue Beers - A Vue.js tutorial</h1>
-        <p><em>A work-in-progress tutorial for Polymer based on my <a href="https://github.com/LostInBrittany/angular-beers">Angular Beers</a> and  <a href="https://github.com/LostInBrittany/polymer-beers">Polymer Beers</a> tutorial</em></p>
+        <h1>Displaying beer details</h1>
+        <p>Now we are going to have two different “pages” (or <em>views</em>) in our Vue Beers application, one for the beer list and another for a single beer detail.</p>
 
-<p><img src="/vue-beers/img/logo-500px.png" alt="Logo" /></p>
+<h2 id="beer-detail-component">Beer detail component</h2>
 
-<p>I have built this <a href="https://lostinbrittany.github.com/io/vue-beers">Vue Beers</a> tutorial as a quick entry point to <a href="https://vuejs.org/">Vue.js</a>. I’ve based it on a similar tutorial I did for <a href="https://angular.io/">Angular</a> and <a href="https://www.polymer-project.org/">Polymer</a>, <a href="https://github.com/LostInBrittany/angular-beers">Angular Beers</a> and  <a href="https://github.com/LostInBrittany/polymer-beers">Polymer Beers</a>.</p>
+<p>We are going to create a <code class="highlighter-rouge">beer-detail</code> component that calls to a <em>beer details</em> service (or in these case, a set of <em>beer details</em> JSON files) to recover and show more information on the chosen beer.</p>
 
-<p>For the last several years, I’ve taught a web-development module in an Engineering School with a rather restrictive network. As I plan to use this tutorial in next year module, in order to explain Vue.js to our students, I needed a tutorial that could be played without network acces, i.e. without npm. So <em>Vue Beers</em> needed to be able to be done even behind a very restrictive proxy, and all the dependencies are included inside the git project.</p>
+<p>The template includes more beer properties, found in the detailed JSON file for each beer. We will use the Fetch API to get the file according to the beer id.</p>
 
-<h2 id="what-are-the-objectives-of-this-tutorial">What are the objectives of this tutorial</h2>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>template: `
+<span class="nt">&lt;div</span> <span class="na">v-bind:id=</span><span class="s">"beer.id"</span> <span class="na">class=</span><span class="s">"detail clearfix"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#/beers"</span><span class="nt">&gt;&lt;img</span> <span class="na">class=</span><span class="s">"pull-right back"</span> <span class="na">src=</span><span class="s">"./img/back.png"</span><span class="nt">&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;&lt;/h1&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"pull-right img"</span> <span class="na">v-bind:src=</span><span class="s">"mainImg"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;&lt;/p&gt;</span>
 
-<p>Follow the tutorial to learn the bases of <a href="https://vuejs.org/">Vue.js</a>, a progressive framework for building web applications. You will:</p>
-
-<ul>
-  <li>See examples of how to use client-side data binding to build dynamic views of data that change immediately in response to user actions.</li>
-  <li>See how Vue.js keeps your views in sync with your data without the need for DOM manipulation.</li>
-  <li>Learn how to build technical elements to make common web tasks, such as getting data into your app, easier.</li>
-</ul>
-
-<p>When you finish the tutorial you will be able to:</p>
-
-<ul>
-  <li>Create a dynamic application that works in all modern browsers.</li>
-  <li>Create custom elements, with its looks and its behaviour encapsulated inside, setting the bases of a true component architecture client-side</li>
-  <li>Use data binding to wire up your data model to your views.</li>
-  <li>Get data from a server</li>
-  <li>Use <a href="https://router.vuejs.org/en/">vue-router</a>, the official routing library, to add multipage capabilities to your application</li>
-</ul>
-
-<p>The tutorial guides you through the entire process of building a simple application. Experiments at the end of each step provide suggestions for you to learn more about Polymer and the application you are building.</p>
-
-<p>You can go through the whole tutorial in a couple of hours or you may want to spend a pleasant day really digging into it. If you’re looking for a shorter introduction to Vue.js, check out the official website.</p>
-
-<p><img src="/img/step-06_01.jpg" alt="Screenshot" /></p>
-
-<p><img src="/img/step-08_02.jpg" alt="Screenshot" /></p>
-
-<h2 id="what-do-i-need-to-use-this-tutorial">What do I need to use this tutorial?</h2>
-
-<p>Besides a web browser and a text-editor (we suggest the excellent <a href="http://www.sublimetext.com/">Sublime Text</a>), you will only need a web-server to test your code.</p>
-
-<p>If you have Python in your system, the easiest way would be to run the embeded SimpleHTTPServer. Go to the project directory and run</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Python 2.x
-python -m SimpleHTTPServer
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"beer-thumbs"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">v-bind:src=</span><span class="s">"beerImg"</span> <span class="na">on-click=</span><span class="s">"setImage"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">v-bind:src=</span><span class="s">"beerLabel"</span> <span class="na">on-click=</span><span class="s">"setImage"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"specs"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;dl&gt;</span>
+        <span class="nt">&lt;dt&gt;</span>Alcohol content<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd&gt;</span>%<span class="nt">&lt;/dd&gt;</span>
+        <span class="nt">&lt;/dl&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    [...]
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+`;
 </code></pre></div></div>
 
-<p>or</p>
+<p>We define a <code class="highlighter-rouge">beer</code> object in the <code class="highlighter-rouge">data</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Python 3.x
-python -m http.server
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">data</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>  
+        <span class="na">beer</span><span class="p">:</span> <span class="p">{},</span> 
+    <span class="p">};</span>
+<span class="p">},</span>
 </code></pre></div></div>
 
-<p>to start the web server. Now, open a browser window for the app and navigate to http://localhost:8000/app/index.html to see the current state of the app.</p>
+<p>And in order to get the details on the current beer as soon as possible, 
+you can query the server from the <code class="highlighter-rouge">mounted</code> lifecycle hook:</p>
 
-<p>If you have <a href="http://nodejs.org">NodeJS</a> in your system, we have put a minimalist JavaScript web-server on <code class="highlighter-rouge">./scripts/web-server.js</code>. To see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and then run <code class="highlighter-rouge">node ./scripts/web-server.js</code> to start the web server. Now, open a browser window for the app and navigate to http://localhost:8000/app/index.html to see the current state of the app.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">mounted</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">getBeerDetils</span><span class="p">(</span><span class="nx">$route</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<h2 id="how-is-the-tutorial-organized">How is the tutorial organized</h2>
+<h2 id="reacting-to-params-changes">Reacting to Params Changes</h2>
 
-<p>As the computers used for the course haven’t Git, we have structured the project to allow a Git-less use. The <code class="highlighter-rouge">app</code> directory is the main directory of the project, the working version of the code. The tutorial is divided in steps, each one in its own directory:</p>
+<p>One thing to note when using routes with params is that when the user navigates from <code class="highlighter-rouge">/beer/AffligemBlond</code> to <code class="highlighter-rouge">/beer/Rochefort8</code>, the same component instance will be reused. Since both routes render the same component, this is more efficient than destroying the old instance and then creating a new one. However, this also means that the lifecycle hooks of the component will not be called.</p>
 
-<ol>
-  <li><a href="./step-01/">Let’s begin with some static HTML</a></li>
-  <li><a href="./step-02/">Creating your first Vue.js app</a></li>
-  <li><a href="./step-03/">A component to iterate the list</a></li>
-  <li><a href="./step-04/">Filtering</a></li>
-  <li><a href="./step-05/">Sorting</a></li>
-  <li><a href="./step-06/">Calling the server</a></li>
-  <li><a href="./step-07/">Routing URLs using vue-router</a></li>
-  <li><a href="./step-08/">Displaying beer details</a></li>
-</ol>
+<p>To react to params changes in the same component, you need to <code class="highlighter-rouge">watch</code> the <code class="highlighter-rouge">$route</code> object and query again the server to get the details:</p>
 
-<p>In each step directory you have a README file that explain the objective of the step, that you will do in the working directory <code class="highlighter-rouge">app</code>. If you have problems or if you get lost, you also have the solution of each step in a <code class="highlighter-rouge">solution</code> folder inside the the step folder. So if you want to see the intended result of the 6th step, you can point your browser to http://localhost:8000/step-06/solution/index.html</p>
-
-<h2 id="what-should-i-do-now">What should I do now?</h2>
-
-<p>OK, now you’re ready to follow this tutorial. If you’re familiar with git, begin by cloning this repository (<code class="highlighter-rouge">git clone https://github.com/LostInBrittany/vue-beers</code>), else you can simply download the zipped file from <a href="https://github.com/LostInBrittany/vue-beers/archive/master.zip">GitHub</a>.</p>
-
-<p>Now can go to <a href="./step-01">step-01</a> and begin to follow the README of that step.</p>
-
-<p>Let’s begin!</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">watch</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'$route'</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="k">from</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">getBeerDetils</span><span class="p">(</span><span class="nx">to</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
 
         <div class='before-solution-next'>
 
     
+        <div class='before'><a href="/vue-beers/step-07/">Previous</a></div>
+    
+    
+        <div class='solution'><a href="/vue-beers/step-08/solution/" target="_blank">Solution</a></div>
     
     
     
