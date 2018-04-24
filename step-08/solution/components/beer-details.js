@@ -9,7 +9,6 @@ window.VueBeers.beerDetails = {
             mainImg: null,
         };
     },
-    props: [ 'id' ],
     computed: {
         imgUrl: function() {
             if (!this.beer.img) {
