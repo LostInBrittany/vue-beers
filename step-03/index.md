@@ -290,6 +290,7 @@ window.VueBeers.beerListItem = {
 After the `props` we can define the template, i.e. how to render the component:
 
 ```html
+{% raw %}
 window.VueBeers.beerListItem = {
     template:  `
         <div class="beer">
@@ -298,6 +299,7 @@ window.VueBeers.beerListItem = {
         </div>
     `,
 }
+{% endraw %}
 ```
 
 So our component is ready, and we can use it from `beer-list`.
