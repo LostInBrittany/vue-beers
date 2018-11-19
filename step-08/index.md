@@ -204,11 +204,13 @@ The two former images are thumbnails, and we would like to show a big version of
 
 
 ```html
+{% raw %}
 <h1 class="name">{{beer.name}}</h1>
 
 <img class="pull-right img" v-bind:src="mainImg">
 
 <p class="description">{{beer.description}}</p>
+{% endraw %}
 ```
 
 We declare `mainImg` as a `data` member, with an empty string as initial value. We want the image to show the bottle image by default, so we set `mainImg` jut after recovering the beer details:
