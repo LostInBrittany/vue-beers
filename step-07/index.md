@@ -89,7 +89,7 @@ We need:
 
 1. Replace the main component with `<route-view>`. Instead of systematically load `beer-list` we are loading the `route-view` router component that will show a component or another according to the route.
 
-    ```javascript
+    ```html
     {% raw %}
         <div class="container demo">
         <div id='app'>
