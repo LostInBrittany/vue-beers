@@ -19,25 +19,33 @@ The template includes more beer properties, found in the detailed JSON file for 
 {% raw %}
 template: `
 <div v-bind:id="beer.id" class="detail clearfix">
-    <a href="#/beers"><img class="pull-right back" src="./img/back.png"></a>
+    <a href="#/">
+        <img class="pull-right back" src="../../img/back.png">
+    </a>
     <h1 class="name">{{beer.name}}</h1>
+    
+    <img class="pull-right img" v-bind:src="mainImg">
+    
     <p class="description">{{beer.description}}</p>
 
     <ul class="beer-thumbs">
-    <li>
-        <img v-bind:src="beer.img">
-    </li>
-    <li>
-        <img v-bind:src="beer.label">
-    </li>
+        <li>
+            <img v-bind:src="imgUrl" 
+                v-on:click="setImage(beer.img)">
+        </li>
+        <li>
+            <img 
+                v-bind:src="labelUrl" 
+                v-on:click="setImage(beer.label)">
+        </li>
     </ul>
     <ul class="specs">
-    <li>
-        <dl>
-        <dt>Alcohol content</dt>
-        <dd>{{beer.alcohol}}%</dd>
-        </dl>
-    </li>
+        <li>
+            <dl>
+            <dt>Alcohol content</dt>
+            <dd>{{beer.alcohol}}%</dd>
+            </dl>
+        </li>
     [...]
     </ul>
 </div>
