@@ -16,6 +16,7 @@ We are going to create a `beer-detail` component that calls to a *beer details* 
 The template includes more beer properties, found in the detailed JSON file for each beer. We will use the Fetch API to get the file according to the beer id.
 
 ```html
+{% raw %}
 template: `
 <div v-bind:id="beer.id" class="detail clearfix">
     <a href="#/beers"><img class="pull-right back" src="./img/back.png"></a>
@@ -24,10 +25,10 @@ template: `
 
     <ul class="beer-thumbs">
     <li>
-        <img v-bind:src="beerImg">
+        <img v-bind:src="beer.img">
     </li>
     <li>
-        <img v-bind:src="beerLabel">
+        <img v-bind:src="beer.label">
     </li>
     </ul>
     <ul class="specs">
@@ -41,6 +42,7 @@ template: `
     </ul>
 </div>
 `;
+{% endraw %}
 ```
 
 Let's add some CSS to make that prettier:
