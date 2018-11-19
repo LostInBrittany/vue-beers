@@ -84,6 +84,7 @@ Let's change the `beer-list` component to a single file `BeerList.vue` component
 1. Put the `template` (whithout any style information) in a `<template>` tag:
 
     ```html
+    {% raw %}
     <template>
       <div class="container">
           <div class="row">
@@ -129,6 +130,7 @@ Let's change the `beer-list` component to a single file `BeerList.vue` component
           </div>
       </div> 
     </template>
+    {% endraw %}
     ```
 
 1. Put the style in a `<style>` tag (nothing in our case, as we have no personalized style):
