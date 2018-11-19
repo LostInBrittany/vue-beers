@@ -228,12 +228,23 @@
 <p>Remember, to see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and start a webserver on that folder.</p>
 
 <blockquote>
-  <p>You have many options to start a webserver on the folder. The simplest one would be using Python or NodeJS:</p>
-  <ul>
-    <li>If you have Pyhton 2.x: <code class="highlighter-rouge">python -m SimpleHTTPServer</code></li>
-    <li>If you have Python 3.x: <code class="highlighter-rouge">python -m http.server</code></li>
-    <li>If you have NodeJs: <code class="highlighter-rouge">node ./scripts/web-server.js</code></li>
-  </ul>
+  <p>As explained in the <a href="../">introduction to the tutorial</a>, you will only need a web-server to test your code</p>
+
+  <p>If you have Python in your system, the easiest way would be to run the embeded SimpleHTTPServer. Go to the project directory and run</p>
+
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Python 2.x
+python -m SimpleHTTPServer
+</code></pre></div>  </div>
+
+  <p>or</p>
+
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Python 3.x
+python -m http.server
+</code></pre></div>  </div>
+
+  <p>to start the web server. Now, open a browser window for the app and navigate to http://localhost:8000/app/index.html to see the current state of the app.</p>
+
+  <p>If you have <a href="http://nodejs.org">NodeJS</a> in your system, we have put a minimalist JavaScript web-server on <code class="highlighter-rouge">./scripts/web-server.js</code>. To see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and then run <code class="highlighter-rouge">node ./scripts/web-server.js</code> to start the web server.</p>
 </blockquote>
 
 <p>Now, open a browser window for the app and navigate to <code class="highlighter-rouge">http://localhost:8000/app/</code> (or the port your webserver uses) to see the current state of the app.</p>

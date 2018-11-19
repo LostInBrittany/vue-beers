@@ -2,6 +2,7 @@
 layout: home
 category: steps
 before: 'step-07/'
+next: 'step-09/'
 solution: 'step-08/solution/'
 title: Displaying beer details
 ---

@@ -10,10 +10,26 @@ This is the initial step of the tutorial. In this step you won't need to code, e
 
 Remember, to see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and start a webserver on that folder.
 
-> You have many options to start a webserver on the folder. The simplest one would be using Python or NodeJS:
-> - If you have Pyhton 2.x: `python -m SimpleHTTPServer`
-> - If you have Python 3.x: `python -m http.server`
-> - If you have NodeJs: `node ./scripts/web-server.js`
+> As explained in the [introduction to the tutorial](../), you will only need a web-server to test your code
+>
+> If you have Python in your system, the easiest way would be to run the embeded SimpleHTTPServer. Go to the project directory and run
+>
+> ```
+> # Python 2.x
+> python -m SimpleHTTPServer
+> ```
+>
+> or 
+>
+> ```
+> # Python 3.x
+> python -m http.server
+> ```
+>
+>to start the web server. Now, open a browser window for the app and navigate to http://localhost:8000/app/index.html to see the current state of the app.
+>
+> If you have [NodeJS](http://nodejs.org) in your system, we have put a minimalist JavaScript web-server on `./scripts/web-server.js`. To see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and then run `node ./scripts/web-server.js` to start the web server. 
+
 
 Now, open a browser window for the app and navigate to `http://localhost:8000/app/` (or the port your webserver uses) to see the current state of the app.
 
