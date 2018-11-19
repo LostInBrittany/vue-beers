@@ -8,7 +8,14 @@ title: Let's begin with some static HTML
 
 This is the initial step of the tutorial. In this step you won't need to code, everything is already coded for you.
 
-Remember, to see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and then run `python -m SimpleHTTPServer` or `node ./scripts/web-server.js` to start the web server. Now, open a browser window for the app and navigate to http://localhost:8000/app/ to see the current state of the app.
+Remember, to see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and start a webserver on that folder.
+
+> You have many options to start a webserver on the folder. The simplest one would be using Python or NodeJS:
+> - If you have Pyhton 2.x: `python -m SimpleHTTPServer`
+> - If you have Python 3.x: `python -m http.server`
+> - If you have NodeJs: `node ./scripts/web-server.js`
+
+Now, open a browser window for the app and navigate to `http://localhost:8000/app/` (or the port your webserver uses) to see the current state of the app.
 
 In order to illustrate how Vue enhances standard HTML, you will create a purely static HTML page and then examine how we can turn this HTML code into a template that Vue will use to dynamically display the same result with any set of data.
 
