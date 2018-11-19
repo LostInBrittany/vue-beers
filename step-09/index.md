@@ -214,4 +214,4 @@ Now in your `index.html` you don't load `beer-list.js` anymore, and you declare 
     })
 ```
 
-Then you can do the same thing with all the other components...
+Then you can do the same thing with all the other components (`BeerDetails` and `BeerListItem`).

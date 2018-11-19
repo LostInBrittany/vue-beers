@@ -15,8 +15,6 @@
 
   <script src='../../node_modules/http-vue-loader/src/httpVueLoader.js'></script>
 
-  <script src='./components/beer-list-item.js'></script>
-  <script src='./components/beer-details.js'></script>
   <style>
     #searchInput {
         max-width: 100%;
@@ -147,8 +145,8 @@
     // 1. Define route components.
     // These can be imported from other files
     Vue.component('beer-list', httpVueLoader('./components/BeerList.vue'));
-    Vue.component('beer-list-item', VueBeers.beerListItem);
-    Vue.component('beer-details', VueBeers.beerDetails);
+    Vue.component('beer-list-item', httpVueLoader('./components/BeerListItem.vue'));
+    Vue.component('beer-details', httpVueLoader('./components/BeerDetails.vue'));
 
     // 2. Define some routes
     // Each route should map to a component. The "component" can
@@ -157,7 +155,7 @@
     // We'll talk about nested routes later.
     const routes = [
         { path: '/', component: httpVueLoader('./components/BeerList.vue')},
-        { path: '/beer/:id', component: VueBeers.beerDetails},
+        { path: '/beer/:id', component: httpVueLoader('./components/BeerDetails.vue')},
     ]
 
     // 3. Create the router instance and pass the `routes` option
