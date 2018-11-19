@@ -305,6 +305,17 @@ simply by using a <code class="highlighter-rouge">script</code> call:</p>
  <span class="p">})</span>
 </code></pre></div>    </div>
   </li>
+  <li>
+    <p>Replace the main component with <code class="highlighter-rouge">&lt;route-view&gt;</code>. Instead of systematically load <code class="highlighter-rouge">beer-list</code> we are loading the <code class="highlighter-rouge">route-view</code> router component that will show a component or another according to the route.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="o">&lt;</span><span class="nx">div</span> <span class="kd">class</span><span class="o">=</span><span class="s2">"container demo"</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s1">'app'</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>             <span class="o">&lt;</span><span class="nx">router</span><span class="o">-</span><span class="nx">view</span><span class="o">&gt;&lt;</span><span class="sr">/router-view</span><span class="err">&gt;
+</span>         <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>     <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span></code></pre></div>    </div>
+  </li>
 </ol>
 
 <h2 id="hyperlinking-the-beers">Hyperlinking the beers</h2>

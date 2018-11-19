@@ -87,6 +87,17 @@ We need:
     })
     ```
 
+1. Replace the main component with `<route-view>`. Instead of systematically load `beer-list` we are loading the `route-view` router component that will show a component or another according to the route.
+
+    ```javascript
+        <div class="container demo">
+            <div id='app'>
+                <h1>{{ message }}</h1>
+                <router-view></router-view>
+            </div>
+        </div>
+    ```
+
 ## Hyperlinking the beers
 
 In order to get more details on a beer on `beer-list-item` when we click on its name, we need to put the name inside a `<router-link >` tag that will send us to the route corresponding to that beer:
