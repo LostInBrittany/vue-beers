@@ -305,7 +305,8 @@ but in this tutorial we want to keep things simple, so in this step we are compi
   <li>
     <p>Put the <code class="highlighter-rouge">template</code> (whithout any style information) in a <code class="highlighter-rouge">&lt;template&gt;</code> tag:</p>
 
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;template&gt;</span>
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    
+ <span class="nt">&lt;template&gt;</span>
    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar col-md-3"</span><span class="nt">&gt;</span>
@@ -321,7 +322,7 @@ but in this tutorial we want to keep things simple, so in this step we are compi
                    <span class="nt">&lt;option</span> 
                            <span class="na">v-for=</span><span class="s">"item in criteria"</span>  
                            <span class="na">v-bind:value=</span><span class="s">"item.name"</span><span class="nt">&gt;</span>
-                          
+                       {{item.label}}
                    <span class="nt">&lt;/option&gt;</span>
                <span class="nt">&lt;/select&gt;</span>
                <span class="nt">&lt;div&gt;</span>
@@ -350,6 +351,7 @@ but in this tutorial we want to keep things simple, so in this step we are compi
        <span class="nt">&lt;/div&gt;</span>
    <span class="nt">&lt;/div&gt;</span> 
  <span class="nt">&lt;/template&gt;</span>
+    
 </code></pre></div>    </div>
   </li>
   <li>
