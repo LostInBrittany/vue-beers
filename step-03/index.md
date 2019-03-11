@@ -8,7 +8,7 @@ title: Iterating the list
 ---
 
 
-In this step we are going to create a more our first Vue component, a custom `beer-list`. This component will use a JavaScript array as model and automatically generate a `beer-list-item` component for each beer in the array.
+In this step we are going to create our first Vue component, a custom `beer-list`. This component will use a JavaScript array as model and automatically generate a `beer-list-item` component for each beer in the array.
 
 
 ## Creating the component file
