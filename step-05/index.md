@@ -8,7 +8,7 @@ title: Sorting the list
 ---
 
 
-In this step, you will add a feature to let your users control the order of the items in the beer list. The dynamic ordering is implemented by creating a new methid, wiring it together with the `v-for` repeater, and letting the data binding magic do the rest of the work.
+In this step, you will add a feature to let your users control the order of the items in the beer list. The dynamic ordering is implemented by creating a new method, wiring it together with the `v-for` repeater, and letting the data binding magic do the rest of the work.
 
 In addition to the search box, the app displays a drop down menu that allows users to control the order in which the beers are listed.
 
