@@ -141,7 +141,7 @@ you can query the server from the `mounted` lifecycle hook:
 
 ```javascript
 mounted: function() {
-    getBeerDetails($route.params.id);
+    getBeerDetails(this.$route.params.id);
 }
 ```
 

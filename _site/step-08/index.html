@@ -363,7 +363,7 @@ template: `
 you can query the server from the <code class="highlighter-rouge">mounted</code> lifecycle hook:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">mounted</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">getBeerDetails</span><span class="p">(</span><span class="nx">$route</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">getBeerDetails</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$route</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -419,11 +419,13 @@ you can query the server from the <code class="highlighter-rouge">mounted</code>
 
 <p>The two former images are thumbnails, and we would like to show a big version of them when they are clicked. Let’s begin by adding a big picture to our template:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;&lt;/h1&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>{{beer.name}}<span class="nt">&lt;/h1&gt;</span>
 
 <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"pull-right img"</span> <span class="na">v-bind:src=</span><span class="s">"mainImg"</span><span class="nt">&gt;</span>
 
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>{{beer.description}}<span class="nt">&lt;/p&gt;</span>
+
 </code></pre></div></div>
 
 <p>We declare <code class="highlighter-rouge">mainImg</code> as a <code class="highlighter-rouge">data</code> member, with an empty string as initial value. We want the image to show the bottle image by default, so we set <code class="highlighter-rouge">mainImg</code> jut after recovering the beer details:</p>
