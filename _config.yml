@@ -44,5 +44,5 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-
+  
 highlighter: rouge
