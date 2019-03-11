@@ -37,11 +37,6 @@ The tutorial guides you through the entire process of building a simple applicat
 
 You can go through the whole tutorial in a couple of hours or you may want to spend a pleasant day really digging into it. If you're looking for a shorter introduction to Vue.js, check out the official website.
 
-![Screenshot](/img/step-06_01.jpg)  
-
-
-![Screenshot](/img/step-08_02.jpg)
-
 ## What do I need to use this tutorial? ##
 
 Besides a web browser and a text-editor (we suggest the excellent [Sublime Text](http://www.sublimetext.com/)), you will only need a web-server to test your code.
