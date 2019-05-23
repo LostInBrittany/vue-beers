@@ -51,7 +51,7 @@ And a `data` folder to serve the static data (that would be replaced by a REST e
 
 ## Dependencies
 
-To simplify third-party dependencies management, all the codse steps and the application you will build will look for the dependencies in the same `node_modules` folder at the root of the repository. 
+To simplify third-party dependencies management, all the codes steps and the application you will build will look for the dependencies in the same `node_modules` folder at the root of the repository. 
 
 All the dependencies have been included in the git repository. The goal is that you could use the project even without `node` and/or `npm` installed on your computer, or in a full offline setting.
 
